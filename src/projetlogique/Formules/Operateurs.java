@@ -36,7 +36,18 @@ public enum Operateurs {
         validEQUI.add("<->");
     }
 
-        Operateurs(String label) {
+    public static ArrayList<String> getValidsOperators() {
+        ArrayList<String> valid = new ArrayList<>();
+        valid.addAll(validAND);
+        valid.addAll(validOR);
+        valid.addAll(validNOT);
+        valid.addAll(validIMPL);
+        valid.addAll(validEQUI);
+        return valid;
+    }
+
+
+    Operateurs(String label) {
         this.label = label;
     }
 
