@@ -16,29 +16,15 @@ public class Formule {
         return formule;
     }
 
-    public Couple split() {
-        Couple ret = new Couple() ;
+    public Couple<String> split() {
+        Couple<String> ret = new Couple<>() ;
 
         // TEMPORAZIRE
-        ret.setLeft(formule.substring(0, formule.length()/2));
-        ret.setRight(formule.substring(formule.length()/2, formule.length() ));
+        ret.setFirst(formule.substring(0, formule.length()/2));
+        ret.setSecond(formule.substring(formule.length()/2, formule.length() ));
 
         return ret;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
