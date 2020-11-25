@@ -20,10 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0b0eced-9595-448e-b3bd-4861d1bc2dce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/projetlogique/utils/Couple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ProjetLogique.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProjetLogique.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projetlogique/formules/Formule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/formules/Formule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/Exceptions/CannotParseOperatorException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/Formules/Formule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/Formules/Operateurs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogiqueTests/testOperateur.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +163,7 @@
       <workItem from="1605789266655" duration="100000" />
       <workItem from="1606121614671" duration="100000" />
       <workItem from="1606302145889" duration="259000" />
-      <workItem from="1606303158618" duration="943000" />
+      <workItem from="1606303158618" duration="2941000" />
     </task>
     <servers />
   </component>
@@ -186,22 +187,22 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="804" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606303628715" />
-    <state width="1802" height="275" key="GridCell.Tab.0.bottom" timestamp="1605701743445">
+    <state width="1802" height="208" key="GridCell.Tab.0.bottom" timestamp="1606306487944">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="275" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1605701743445" />
-    <state width="1802" height="275" key="GridCell.Tab.0.center" timestamp="1605701743441">
+    <state width="1802" height="208" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1606306487944" />
+    <state width="1802" height="208" key="GridCell.Tab.0.center" timestamp="1606306487942">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="275" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1605701743441" />
-    <state width="1802" height="275" key="GridCell.Tab.0.left" timestamp="1605701743441">
+    <state width="1802" height="208" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1606306487942" />
+    <state width="1802" height="208" key="GridCell.Tab.0.left" timestamp="1606306487941">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="275" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1605701743441" />
-    <state width="1802" height="275" key="GridCell.Tab.0.right" timestamp="1605701743443">
+    <state width="1802" height="208" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1606306487941" />
+    <state width="1802" height="208" key="GridCell.Tab.0.right" timestamp="1606306487943">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1802" height="275" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1605701743443" />
+    <state width="1802" height="208" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1606306487943" />
     <state x="501" y="107" width="1024" height="852" key="SettingsEditor" timestamp="1606302381467">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
