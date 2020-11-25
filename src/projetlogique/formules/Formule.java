@@ -1,5 +1,7 @@
 package projetlogique.formules;
 
+import projetlogique.utils.Couple;
+
 import java.util.ArrayList;
 
 public class Formule {
@@ -12,6 +14,16 @@ public class Formule {
 
     public String getFormule() {
         return formule;
+    }
+
+    public Couple split() {
+        Couple ret = new Couple() ;
+
+        // TEMPORAZIRE
+        ret.setLeft(formule.substring(0, formule.length()/2));
+        ret.setRight(formule.substring(formule.length()/2, formule.length() ));
+
+        return ret;
     }
 
 
