@@ -1,4 +1,4 @@
-package projetlogique.Exceptions;
+package projetlogique.exceptions;
 
 public class CannotParseOperatorException extends Exception {
 

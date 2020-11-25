@@ -3,13 +3,14 @@ package projetlogiqueTests;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import projetlogique.Exceptions.CannotParseOperatorException;
-import projetlogique.Formules.Operateurs;
+
+import projetlogique.exceptions.CannotParseOperatorException;
+import projetlogique.formules.Operateurs;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class testOperateur {
+public class TestOperateur {
 
     private Operateurs non;
     private Operateurs and;

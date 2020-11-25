@@ -1,4 +1,4 @@
-package projetlogique.Formules;
+package projetlogique.formules;
 
 import java.util.ArrayList;
 

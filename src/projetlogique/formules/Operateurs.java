@@ -1,8 +1,8 @@
-package projetlogique.Formules;
-
-import projetlogique.Exceptions.CannotParseOperatorException;
+package projetlogique.formules;
 
 import java.util.ArrayList;
+
+import projetlogique.exceptions.CannotParseOperatorException;
 
 
 public enum Operateurs {
