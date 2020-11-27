@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0b0eced-9595-448e-b3bd-4861d1bc2dce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/projetlogique/SplitPremier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetlogique/SplitPremier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/SplitPremier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetlogique/formules/Formule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/formules/Formule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +86,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -163,6 +174,7 @@
       <workItem from="1606302145889" duration="259000" />
       <workItem from="1606303158618" duration="2941000" />
       <workItem from="1606404125348" duration="1684000" />
+      <workItem from="1606477526095" duration="430000" />
     </task>
     <servers />
   </component>

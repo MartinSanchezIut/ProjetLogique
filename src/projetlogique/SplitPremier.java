@@ -20,7 +20,7 @@ public class SplitPremier {
     /*
         static split ( String formule ) : retourne la formule simplifie par la methodee de l'arbre
      */
-    public static void split(String formule) throws CannotParseOperatorException {
+    public static ArrayList<String> split(String formule) throws CannotParseOperatorException {
 
         int taille = formule.length() ;
 
@@ -67,10 +67,14 @@ public class SplitPremier {
         String p1 = formule.substring(0, minIndex) ;
         String p2 = formule.substring(minIndex+1, taille) ;
 
-        if (op)
-
+        ArrayList<String> ret = new ArrayList<>();
+        ret.add(operateursTrouve.get(minIndex).toString());
+        ret.add(p1);
+        ret.add(p2);
 
         System.out.println(formule);
         System.out.println(p1 + " | " + p2);
+
+        return ret;
     }
 }
