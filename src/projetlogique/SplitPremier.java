@@ -57,6 +57,7 @@ public class SplitPremier {
             }
         }
 
+
         System.out.println("Indexs " + index);
         System.out.println("Priorites " + priorite);
         System.out.println("Operateurs " + operateursTrouve);
@@ -65,6 +66,9 @@ public class SplitPremier {
 
         String p1 = formule.substring(0, minIndex) ;
         String p2 = formule.substring(minIndex+1, taille) ;
+
+        if (op)
+
 
         System.out.println(formule);
         System.out.println(p1 + " | " + p2);
