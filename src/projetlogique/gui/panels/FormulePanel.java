@@ -150,6 +150,10 @@ public class FormulePanel extends JPanel {
 				
 				pane.revalidate();
 				addMouseListener(formuleSplitted);
+				
+				for ( MouseListener m : e.getComponent().getMouseListeners() ) {
+					e.getComponent().removeMouseListener(m);
+				}
 			}
 		});
 	}
