@@ -1,9 +1,9 @@
 package projetlogique.exceptions;
 
-public class CannotParseOperatorException extends Exception {
+public class CannotParseOperatorException extends RuntimeException {
 
-    private String op;
-    public CannotParseOperatorException(String operator) {
+    private Character op;
+    public CannotParseOperatorException(Character operator) {
             op = operator;
     }
 

@@ -40,6 +40,6 @@ public class TestOperateur {
     }
     @Test
     public void testParseThrow() {
-        assertThrows(CannotParseOperatorException.class, () -> {Operateurs.parse("a"); });
+        assertThrows(CannotParseOperatorException.class, () -> {Operateurs.parse('a'); });
     }
 }
