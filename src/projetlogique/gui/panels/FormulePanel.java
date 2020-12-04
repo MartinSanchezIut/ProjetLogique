@@ -10,16 +10,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import projetlogique.formules.Formule;
+import projetlogique.utils.Couple;
 
 public class FormulePanel extends JPanel {
 	
@@ -27,7 +29,11 @@ public class FormulePanel extends JPanel {
 	private static JTextField textField;
 	private JLayeredPane pane;
 	private GridBagConstraints paneConstraints;
-	private static int gridY = 1;
+	private Map<JTextArea , Integer> textAreaToGridX = new HashMap<>();
+	private Map<JTextArea , Integer> textAreaToGridY = new HashMap<>();
+	private static int maxBranchs = 0;
+	private Map<JTextArea, JTextArea> childrenToParent = new HashMap<>();
+	private JTextArea rootArea;
 	
 	public FormulePanel() {
 		
@@ -69,6 +75,8 @@ public class FormulePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				maxBranchs = countSymbolesPropositionnels(textField.getText())*2; //x2 au cas où ce soit seulement des OU
+				
 				for ( Component comp : pane.getComponents() ) {
 					pane.remove(comp);
 				}
@@ -78,12 +86,21 @@ public class FormulePanel extends JPanel {
 				formulesDeveloppees.setText(textField.getText());
 				formulesDeveloppees.setBounds(5, 30, 990, 30);
 				formulesDeveloppees.setBackground(new Color(190, 140, 100));
-				paneConstraints.gridx = 0;
+				if ( maxBranchs % 2 == 1 )
+					paneConstraints.gridx = maxBranchs/2+1;
+				else 
+					paneConstraints.gridx = maxBranchs/2;
+				System.out.println("rootGridX: " + paneConstraints.gridx);
 				paneConstraints.gridy = 0;
 				paneConstraints.insets = new Insets(10, 0, 0, 0);
 				pane.add(formulesDeveloppees, paneConstraints);
 				
 				addMouseListener(formulesDeveloppees);
+				
+				textAreaToGridX.clear();
+				textAreaToGridX.put(formulesDeveloppees, paneConstraints.gridx);
+				textAreaToGridY.put(formulesDeveloppees, paneConstraints.gridy);
+				rootArea = formulesDeveloppees;
 				
 				//pane.updateUI();
 				pane.revalidate();
@@ -112,51 +129,248 @@ public class FormulePanel extends JPanel {
 		area.addMouseListener(new MouseListener() {
 			
 			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseReleased(MouseEvent e) {}
 			
 			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mousePressed(MouseEvent e) {}
 			
 			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+			public void mouseExited(MouseEvent e) {}
+
 			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+			public void mouseEntered(MouseEvent e) {}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JTextArea formuleSplitted = new JTextArea();
-				formuleSplitted.setEditable(false);
-				formuleSplitted.setText(textField.getText());
-				formuleSplitted.setBounds(5, 30, 990, 30);
-				formuleSplitted.setBackground(new Color(190, 140, 100));
-				paneConstraints.gridx = 0;
-				paneConstraints.gridy = gridY;
-				gridY++;
-				paneConstraints.insets = new Insets(10, 0, 0, 0);
-				pane.add(formuleSplitted, paneConstraints);
 				
-				pane.revalidate();
-				addMouseListener(formuleSplitted);
+				//System.out.println(e.getComponent().getClass());
 				
-				for ( MouseListener m : e.getComponent().getMouseListeners() ) {
-					e.getComponent().removeMouseListener(m);
+				if ( e.getComponent() instanceof JTextArea) {
+					Couple<String> formules = new Formule(((JTextArea) e.getComponent()).getText()).split();
+					System.out.println("maxBranchs: "+ maxBranchs);
+					/*int fatherGridX = textAreaToConstraints.get((JTextArea) e.getComponent()).gridx;
+					System.out.println("fatherGridX: "+fatherGridX);
+					//création et placement de la 1ère zone de text
+					JTextArea firstSplit = new JTextArea();
+					firstSplit.setEditable(false);
+					firstSplit.setText(formules.getFirst());
+					firstSplit.setBounds(5, 30, 990, 30);
+					firstSplit.setBackground(new Color(190, 140, 100));
+					
+					paneConstraints.gridx = 50;
+					paneConstraints.gridy = gridY;
+					paneConstraints.insets = new Insets(10, 0, 0, 0);
+					pane.add(firstSplit, paneConstraints);
+					
+					textAreaToConstraints.put(firstSplit, paneConstraints);
+					
+					if ( formules.getSecond() != null ) {
+						JTextArea secondSplit = new JTextArea();
+						secondSplit.setEditable(false);
+						secondSplit.setText(formules.getSecond());
+						secondSplit.setBounds(5, 30, 990, 30);
+						secondSplit.setBackground(new Color(190, 140, 100));
+						paneConstraints.gridx = 50;
+						paneConstraints.gridy = gridY;
+						
+						paneConstraints.insets = new Insets(10, 0, 0, 0);
+						pane.add(secondSplit, paneConstraints);
+						
+						
+						textAreaToConstraints.put(secondSplit, paneConstraints);
+					} 
+					
+					gridY++;*/
+					
+					createChildren(formules, (JTextArea) e.getComponent());
+					
+					
+					//fix GUI and add listener to the textArea generated
+					pane.revalidate();
+					//addMouseListener(firstSplit);
+					
+					
+					//remove listener for this area
+					for ( MouseListener m : e.getComponent().getMouseListeners() ) {
+						e.getComponent().removeMouseListener(m);
+					}
 				}
+				
 			}
 		});
 	}
+	
+	
+	
+	
+	private int countSymbolesPropositionnels(String str) {
+		int count = 0;
+		for ( int i = 0 ; i < str.length() ; i++ ) {
+			if ( str.charAt(i) == '∧' || str.charAt(i) == '∨' || str.charAt(i) == '¬' || ((int) str.charAt(i)) == 8594) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	
+	/*
+	 * Get the nearest left grid x by going up in the tree
+	 */
+	private int getNearestLeftGridX(JTextArea directFather) {
+		
+		JTextArea actual = directFather;
+		boolean gridXHasOnlyReduced = true;
+		
+		while ( childrenToParent.get(actual) != null ) { //tant qu'il y a un père
+			if ( textAreaToGridX.get(actual) < textAreaToGridX.get(childrenToParent.get(actual)) ) {
+				actual = childrenToParent.get(actual);
+			} else {
+				actual = childrenToParent.get(actual);
+				gridXHasOnlyReduced = false;
+				break;
+			}
+		}
+		
+		System.out.println("actual = directFather: "+ actual.equals(directFather));
+		System.out.println("actual = rootArea : "+ actual.equals(rootArea) );
+		
+		if ( actual.equals(directFather) || (actual.equals(rootArea) && gridXHasOnlyReduced) )
+			return 0;
+		
+		System.out.println("nearestLeftGridX: "+textAreaToGridX.get(actual));
+		return textAreaToGridX.get(actual);
+	}
+	
+	/*
+	 * Get the nearest right grid x by going up in the tree
+	 */
+	private int getNearestRightGridX(JTextArea directFather) {
+		
+		JTextArea actual = directFather;
+		
+		while ( childrenToParent.get(actual) != null ) { //tant qu'il y a un père
+			if ( textAreaToGridX.get(childrenToParent.get(actual)) < textAreaToGridX.get(actual) ) {
+				actual = childrenToParent.get(actual);
+			} else {
+				actual = childrenToParent.get(actual);
+				System.out.println("breaked at the parent of : "+actual.getText());
+				break;
+			}
+		}
+		
+		
+		if ( actual.equals(directFather) )
+			return maxBranchs;
+		
+		return textAreaToGridX.get(actual);
+	}
+	
+	
+	
+	/*
+	 * Add a textArea on the bottom right of the father
+	 */
+	private void createRightChild(String text, JTextArea father) {
+		
+		int fatherGridX = textAreaToGridX.get(father);
+		
+		JTextArea secondSplit = new JTextArea();
+		secondSplit.setEditable(false);
+		secondSplit.setText(text);
+		secondSplit.setBounds(5, 30, 990, 30);
+		secondSplit.setBackground(new Color(190, 140, 100));
+		paneConstraints.gridx = (int) (Math.ceil((getNearestRightGridX(father) - fatherGridX) / 2.0 ) + fatherGridX);
+		paneConstraints.gridy = textAreaToGridY.get(father)+1;
+		
+		paneConstraints.insets = new Insets(10, 0, 0, 0);
+		pane.add(secondSplit, paneConstraints);
+		
+		
+		textAreaToGridX.put(secondSplit, paneConstraints.gridx);
+		textAreaToGridY.put(secondSplit, paneConstraints.gridy);
+		childrenToParent.put(secondSplit, father);
+		addMouseListener(secondSplit);
+		
+		
+		System.out.println("RIGHT CHILD /// fatherGridX: "+ fatherGridX + " gridX: "+ paneConstraints.gridx + " NearestRight: "+ getNearestRightGridX(father) );
+		
+		
+	}
+	
+	/*
+	 * Add a textArea on the bottom left of the father
+	 */
+	private void createLeftChild(String text, JTextArea father) {
+		
+		int fatherGridX = textAreaToGridX.get(father);
+		
+		JTextArea firstSplit = new JTextArea();
+		firstSplit.setEditable(false);
+		firstSplit.setText(text);
+		firstSplit.setBounds(5, 30, 990, 30);
+		firstSplit.setBackground(new Color(190, 140, 100));
+		paneConstraints.gridx = (int) (Math.ceil((fatherGridX - getNearestLeftGridX(father)) / 2) + getNearestLeftGridX(father));
+		paneConstraints.gridy = textAreaToGridY.get(father)+1;
+		
+		paneConstraints.insets = new Insets(10, 0, 0, 0);
+		pane.add(firstSplit, paneConstraints);
+		
+		
+		textAreaToGridX.put(firstSplit, paneConstraints.gridx);
+		textAreaToGridY.put(firstSplit, paneConstraints.gridy);
+		childrenToParent.put(firstSplit, father);
+		addMouseListener(firstSplit);
+		
+		
+		
+		System.out.println("LEFT CHILD /// fatherGridX: "+ fatherGridX + " gridX: "+ paneConstraints.gridx + " Nearest Left: " + getNearestLeftGridX(father));
+		
+	}
+	
+	/*
+	 * Add a textArea below the fatherGridX
+	 */
+	private void createAloneChild(String text, JTextArea father) {
+		
+		int fatherGridX = textAreaToGridX.get(father);
+		
+		JTextArea split = new JTextArea();
+		split.setEditable(false);
+		split.setText(text);
+		split.setBounds(5, 30, 990, 30);
+		split.setBackground(new Color(190, 140, 100));
+		paneConstraints.gridx = fatherGridX;
+		paneConstraints.gridy = textAreaToGridY.get(father)+1;
+		
+		paneConstraints.insets = new Insets(10, 0, 0, 0);
+		pane.add(split, paneConstraints);
+		
+		
+		textAreaToGridX.put(split, paneConstraints.gridx);
+		textAreaToGridY.put(split, paneConstraints.gridy);
+		childrenToParent.put(split, father);
+		addMouseListener(split);
+	}
+	
+	
+	
+	
+	private void createChildren(Couple<String> couple, JTextArea father) {
+		if ( couple.getSecond() == null ) //un seul couple est retourné
+			createAloneChild(couple.getFirst(), father);
+		else {
+			createLeftChild(couple.getFirst(), father);
+			createRightChild(couple.getSecond(), father);
+		}
+			
+	}
+	
+	
+	
+	
+	
+	
 	
 
 }
