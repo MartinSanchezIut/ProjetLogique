@@ -3,6 +3,7 @@ package projetlogique.gui.panels;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,12 +11,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -135,6 +138,7 @@ public class FormulePanel extends JPanel {
 			@Override
 			public void mouseEntered(MouseEvent e) {}
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -166,9 +170,19 @@ public class FormulePanel extends JPanel {
 						String str = ((JTextArea) e.getComponent()).getText().replaceAll(" ", "");
 						
 						if ( containsContradiction(str) ) {
-							System.out.println("Contradiction trouvée !");
+							JOptionPane.showMessageDialog(null, "Contradiction trouvée !", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
+							
+							Font font = new Font("helvetica", Font.PLAIN, 12);
+							Map attributes = font.getAttributes();
+							attributes.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+							Font newFont = new Font(attributes); 
+							((JTextArea) e.getComponent()).setFont(newFont);
+							
+							for ( MouseListener m : e.getComponent().getMouseListeners() ) {
+								e.getComponent().removeMouseListener(m);
+							}
 						} else {
-							System.out.println("Il n'y a aucun contradiction ici !");
+							JOptionPane.showMessageDialog(null, "Aucune contradiction ici !", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
 						}
 						
 					}
@@ -367,12 +381,12 @@ public class FormulePanel extends JPanel {
 		
 		for ( String part : tab ) {
 			
-			System.out.println("length : "+part.length()+ " ("+part+")");
+			//System.out.println("length : "+part.length()+ " ("+part+")");
 			
 			if ( part.length() < 3 ) {
 				for ( String otherPart : parts ) {
 					
-					System.out.println("part: "+part+" / otherPart: "+otherPart);
+					//System.out.println("part: "+part+" / otherPart: "+otherPart);
 					
 					if ( !part.equals(otherPart) ) {
 						
