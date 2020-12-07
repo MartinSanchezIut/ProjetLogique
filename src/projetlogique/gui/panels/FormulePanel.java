@@ -21,6 +21,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import projetlogique.formules.Formule;
+import projetlogique.formules.Operateurs;
+import projetlogique.formules.SplitFormule;
 import projetlogique.utils.Couple;
 
 public class FormulePanel extends JPanel {
@@ -75,7 +77,7 @@ public class FormulePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				maxBranchs = countSymbolesPropositionnels(textField.getText())*2; //x2 au cas où ce soit seulement des OU
+				maxBranchs = 100; /*countSymbolesPropositionnels(textField.getText())*2; *///x2 au cas où ce soit seulement des OU
 				
 				for ( Component comp : pane.getComponents() ) {
 					pane.remove(comp);
@@ -146,7 +148,7 @@ public class FormulePanel extends JPanel {
 				//System.out.println(e.getComponent().getClass());
 				
 				if ( e.getComponent() instanceof JTextArea) {
-					Couple<String> formules = new Formule(((JTextArea) e.getComponent()).getText()).split();
+					SplitFormule formules = new Formule(((JTextArea) e.getComponent()).getText()).split();
 					System.out.println("maxBranchs: "+ maxBranchs);
 					/*int fatherGridX = textAreaToConstraints.get((JTextArea) e.getComponent()).gridx;
 					System.out.println("fatherGridX: "+fatherGridX);
@@ -219,6 +221,8 @@ public class FormulePanel extends JPanel {
 	 */
 	private int getNearestLeftGridX(JTextArea directFather) {
 		
+		System.out.println("-------NEAREST LEFT----------");
+		
 		JTextArea actual = directFather;
 		boolean gridXHasOnlyReduced = true;
 		
@@ -233,8 +237,9 @@ public class FormulePanel extends JPanel {
 		}
 		
 		System.out.println("actual = directFather: "+ actual.equals(directFather));
-		System.out.println("actual = rootArea : "+ actual.equals(rootArea) );
+		System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced);
 		
+		System.out.println("---------------------");
 		if ( actual.equals(directFather) || (actual.equals(rootArea) && gridXHasOnlyReduced) )
 			return 0;
 		
@@ -247,20 +252,27 @@ public class FormulePanel extends JPanel {
 	 */
 	private int getNearestRightGridX(JTextArea directFather) {
 		
+		System.out.println("-------NEAREST RIGHT----------");
+		
 		JTextArea actual = directFather;
+		boolean gridXHasOnlyReduced = true;
 		
 		while ( childrenToParent.get(actual) != null ) { //tant qu'il y a un père
 			if ( textAreaToGridX.get(childrenToParent.get(actual)) < textAreaToGridX.get(actual) ) {
 				actual = childrenToParent.get(actual);
 			} else {
 				actual = childrenToParent.get(actual);
-				System.out.println("breaked at the parent of : "+actual.getText());
+				gridXHasOnlyReduced = false;
+				System.out.println("broke at the parent of : "+actual.getText());
 				break;
 			}
 		}
 		
+		System.out.println("actual = directFather: "+ actual.equals(directFather));
+		System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced);
 		
-		if ( actual.equals(directFather) )
+		System.out.println("---------------------");
+		if ( actual.equals(directFather) && (actual.equals(rootArea) && gridXHasOnlyReduced) )
 			return maxBranchs;
 		
 		return textAreaToGridX.get(actual);
@@ -356,12 +368,14 @@ public class FormulePanel extends JPanel {
 	
 	
 	
-	private void createChildren(Couple<String> couple, JTextArea father) {
-		if ( couple.getSecond() == null ) //un seul couple est retourné
-			createAloneChild(couple.getFirst(), father);
+	private void createChildren(SplitFormule formule, JTextArea father) {
+		if ( formule.getOp() == Operateurs.AND ) { //un seul couple est retourné
+			System.out.println("CREATING ALONE CHILD");
+			createAloneChild(formule.getF1().toString(), father);
+		}
 		else {
-			createLeftChild(couple.getFirst(), father);
-			createRightChild(couple.getSecond(), father);
+			createLeftChild(formule.getF1().toString(), father);
+			createRightChild(formule.getF2().toString(), father);
 		}
 			
 	}
