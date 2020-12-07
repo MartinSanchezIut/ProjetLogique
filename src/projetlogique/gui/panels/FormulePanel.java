@@ -272,7 +272,7 @@ public class FormulePanel extends JPanel {
 		System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced);
 		
 		System.out.println("---------------------");
-		if ( actual.equals(directFather) && (actual.equals(rootArea) && gridXHasOnlyReduced) )
+		if ( actual.equals(directFather) || (actual.equals(rootArea) && gridXHasOnlyReduced) )
 			return maxBranchs;
 		
 		return textAreaToGridX.get(actual);
@@ -343,13 +343,13 @@ public class FormulePanel extends JPanel {
 	/*
 	 * Add a textArea below the fatherGridX
 	 */
-	private void createAloneChild(String text, JTextArea father) {
+	private void createAloneChild(SplitFormule formule, JTextArea father) {
 		
 		int fatherGridX = textAreaToGridX.get(father);
 		
 		JTextArea split = new JTextArea();
 		split.setEditable(false);
-		split.setText(text);
+		split.setText(formule.getF1().toString()+"\n"+formule.getF2().toString());
 		split.setBounds(5, 30, 990, 30);
 		split.setBackground(new Color(190, 140, 100));
 		paneConstraints.gridx = fatherGridX;
@@ -371,7 +371,7 @@ public class FormulePanel extends JPanel {
 	private void createChildren(SplitFormule formule, JTextArea father) {
 		if ( formule.getOp() == Operateurs.AND ) { //un seul couple est retourné
 			System.out.println("CREATING ALONE CHILD");
-			createAloneChild(formule.getF1().toString(), father);
+			createAloneChild(formule, father);
 		}
 		else {
 			createLeftChild(formule.getF1().toString(), father);
