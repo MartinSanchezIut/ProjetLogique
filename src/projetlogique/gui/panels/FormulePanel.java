@@ -62,7 +62,7 @@ public class FormulePanel extends JPanel {
 		constraints.gridx = 0;
 		constraints.gridy = 1;
 		constraints.insets = new Insets(10, 0, 0, 0);
-		pane.setPreferredSize(new Dimension(1000, 500));
+		pane.setPreferredSize(new Dimension(1500, 500));
 		pane.setBorder(BorderFactory.createTitledBorder("Arbre"));
 		
 		pane.setLayout(new GridBagLayout());
@@ -106,7 +106,8 @@ public class FormulePanel extends JPanel {
 				pane.revalidate();
 				pane.repaint();
 				
-				//TODO RESET POINTS
+				
+				OptionsPanel.setPoints(0);
 			}
 		});
 		
@@ -138,22 +139,40 @@ public class FormulePanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				
 				if ( e.getComponent() instanceof JTextArea) {
-					SplitFormule formules = new Formule(((JTextArea) e.getComponent()).getText()).split();
-					//System.out.println("maxBranchs: "+ maxBranchs);
 					
-					createChildren(formules, (JTextArea) e.getComponent());
+					if ( e.getButton() == 1 ) { //clic gauche
+						
+						SplitFormule formules = new Formule(((JTextArea) e.getComponent()).getText()).split();
+						//System.out.println("maxBranchs: "+ maxBranchs);
+						
+						createChildren(formules, (JTextArea) e.getComponent());
+						
+						
+						//fix GUI and add listener to the textArea generated
+						pane.revalidate();
+						
+						
+						//remove listener for this area
+						for ( MouseListener m : e.getComponent().getMouseListeners() ) {
+							e.getComponent().removeMouseListener(m);
+						}
+						
+						
+						OptionsPanel.setPoints(OptionsPanel.getPoints()+1);
+					}
 					
-					
-					//fix GUI and add listener to the textArea generated
-					pane.revalidate();
-					
-					
-					//remove listener for this area
-					for ( MouseListener m : e.getComponent().getMouseListeners() ) {
-						e.getComponent().removeMouseListener(m);
+					else if ( e.getButton() == 3 ) { //clic droit
+						
+						String str = ((JTextArea) e.getComponent()).getText().replaceAll(" ", "");
+						
+						if ( containsContradiction(str) ) {
+							System.out.println("Contradiction trouvée !");
+						} else {
+							System.out.println("Il n'y a aucun contradiction ici !");
+						}
+						
 					}
 				}
-				
 			}
 		});
 	}
@@ -301,7 +320,7 @@ public class FormulePanel extends JPanel {
 		
 		JTextArea split = new JTextArea();
 		split.setEditable(false);
-		split.setText(formule.getF1().toString()+"\n"+formule.getF2().toString());
+		split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 		split.setBounds(5, 30, 990, 30);
 		split.setBackground(new Color(190, 140, 100));
 		paneConstraints.gridx = fatherGridX;
@@ -329,6 +348,54 @@ public class FormulePanel extends JPanel {
 			createRightChild(formule.getF2().toString(), father);
 		}
 			
+	}
+	
+	
+	
+	private boolean containsContradiction(String str) {
+		String[] parts = str.split("\n\n");
+		String[] tab = new String[parts.length];
+		
+		for ( int i = 0 ; i < parts.length ; i++ ) {
+			parts[i] = parts[i].replaceAll(" ", "");
+			parts[i] = parts[i].replaceAll("\\(", "");
+			parts[i] = parts[i].replaceAll("\\)", "");
+			
+			tab[i]= parts[i];
+		}
+		
+		
+		for ( String part : tab ) {
+			
+			System.out.println("length : "+part.length()+ " ("+part+")");
+			
+			if ( part.length() < 3 ) {
+				for ( String otherPart : parts ) {
+					
+					System.out.println("part: "+part+" / otherPart: "+otherPart);
+					
+					if ( !part.equals(otherPart) ) {
+						
+						if ( part.contains("¬") && !otherPart.contains("¬") ) {
+							
+							char c = part.charAt(part.indexOf("¬")+1);
+							if ( otherPart.contains(c+"") )
+								return true;
+							
+						} else if ( otherPart.contains("¬") && !part.contains("¬") ) {
+							
+							char c = otherPart.charAt(part.indexOf("¬")+1);
+							if ( part.contains(c+"") ) 
+								return true;
+							
+						}
+						
+					}
+				}
+			}
+		}
+		
+		return false;
 	}
 	
 	
