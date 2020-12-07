@@ -20,22 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0b0eced-9595-448e-b3bd-4861d1bc2dce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/projetlogique/formules/SplitFormule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/projetlogique/utils/Arbre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/projetlogique/utils/Noeud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/SplitPremier.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/SplitPremier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/exceptions/CannotParseOperatorException.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/exceptions/CannotParseOperatorException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Formule.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Formule.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Operateurs.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Operateurs.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogiqueTests/TestOperateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogiqueTests/TestOperateur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/utils/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/utils/Noeud.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/projetlogique/SplitPremier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/SplitPremier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projetlogique/exceptions/CannotParseOperatorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/exceptions/CannotParseOperatorException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/projetlogique/formules/Formule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/formules/Formule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projetlogique/formules/Operateurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/formules/Operateurs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projetlogiqueTests/TestOperateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogiqueTests/TestOperateur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,13 +97,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -191,6 +186,7 @@
       <workItem from="1606477526095" duration="430000" />
       <workItem from="1606904855779" duration="12085000" />
       <workItem from="1606928251519" duration="6955000" />
+      <workItem from="1607335855869" duration="1980000" />
     </task>
     <servers />
   </component>

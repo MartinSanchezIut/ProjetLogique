@@ -142,7 +142,13 @@ public class Formule {
                 ret = new SplitFormule(new Formule(p1), Operateurs.OR, new Formule(Operateurs.NOT.getLabel()+"("+p2+")"));
             }
         }else {
-            ret = new SplitFormule(new Formule(p1), operateursTrouve.get(minIndex), new Formule(p2));
+
+            if (operateursTrouve.get(minIndex) == Operateurs.IMPLICATION) {
+                ret = new SplitFormule(new Formule(Operateurs.NOT.getLabel() + "(" +p1+ ")"), Operateurs.OR, new Formule(p2));
+            }else {
+
+                ret = new SplitFormule(new Formule(p1), operateursTrouve.get(minIndex), new Formule(p2));
+            }
         }
 
         return ret;
