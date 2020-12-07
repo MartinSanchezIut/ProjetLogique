@@ -12,9 +12,6 @@ import projetlogique.gui.panels.OptionsPanel;
 public class Fenetre extends JFrame {
 	
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3560404405310867980L;
 
 	public Fenetre() {

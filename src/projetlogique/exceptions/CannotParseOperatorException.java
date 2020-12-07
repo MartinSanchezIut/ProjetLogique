@@ -2,7 +2,8 @@ package projetlogique.exceptions;
 
 public class CannotParseOperatorException extends RuntimeException {
 
-    private Character op;
+	private static final long serialVersionUID = -2832539791065707294L;
+	private Character op;
     public CannotParseOperatorException(Character operator) {
             op = operator;
     }

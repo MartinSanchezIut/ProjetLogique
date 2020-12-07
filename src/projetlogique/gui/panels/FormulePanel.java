@@ -23,7 +23,6 @@ import javax.swing.JTextField;
 import projetlogique.formules.Formule;
 import projetlogique.formules.Operateurs;
 import projetlogique.formules.SplitFormule;
-import projetlogique.utils.Couple;
 
 public class FormulePanel extends JPanel {
 	
@@ -92,7 +91,7 @@ public class FormulePanel extends JPanel {
 					paneConstraints.gridx = maxBranchs/2+1;
 				else 
 					paneConstraints.gridx = maxBranchs/2;
-				System.out.println("rootGridX: " + paneConstraints.gridx);
+				
 				paneConstraints.gridy = 0;
 				paneConstraints.insets = new Insets(10, 0, 0, 0);
 				pane.add(formulesDeveloppees, paneConstraints);
@@ -104,15 +103,8 @@ public class FormulePanel extends JPanel {
 				textAreaToGridY.put(formulesDeveloppees, paneConstraints.gridy);
 				rootArea = formulesDeveloppees;
 				
-				//pane.updateUI();
 				pane.revalidate();
 				pane.repaint();
-				/*updateUI();
-				repaint();
-				revalidate();
-				doLayout();*/
-				
-				//pane.doLayout();
 				
 				//TODO RESET POINTS
 			}
@@ -145,51 +137,15 @@ public class FormulePanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				//System.out.println(e.getComponent().getClass());
-				
 				if ( e.getComponent() instanceof JTextArea) {
 					SplitFormule formules = new Formule(((JTextArea) e.getComponent()).getText()).split();
-					System.out.println("maxBranchs: "+ maxBranchs);
-					/*int fatherGridX = textAreaToConstraints.get((JTextArea) e.getComponent()).gridx;
-					System.out.println("fatherGridX: "+fatherGridX);
-					//création et placement de la 1ère zone de text
-					JTextArea firstSplit = new JTextArea();
-					firstSplit.setEditable(false);
-					firstSplit.setText(formules.getFirst());
-					firstSplit.setBounds(5, 30, 990, 30);
-					firstSplit.setBackground(new Color(190, 140, 100));
-					
-					paneConstraints.gridx = 50;
-					paneConstraints.gridy = gridY;
-					paneConstraints.insets = new Insets(10, 0, 0, 0);
-					pane.add(firstSplit, paneConstraints);
-					
-					textAreaToConstraints.put(firstSplit, paneConstraints);
-					
-					if ( formules.getSecond() != null ) {
-						JTextArea secondSplit = new JTextArea();
-						secondSplit.setEditable(false);
-						secondSplit.setText(formules.getSecond());
-						secondSplit.setBounds(5, 30, 990, 30);
-						secondSplit.setBackground(new Color(190, 140, 100));
-						paneConstraints.gridx = 50;
-						paneConstraints.gridy = gridY;
-						
-						paneConstraints.insets = new Insets(10, 0, 0, 0);
-						pane.add(secondSplit, paneConstraints);
-						
-						
-						textAreaToConstraints.put(secondSplit, paneConstraints);
-					} 
-					
-					gridY++;*/
+					//System.out.println("maxBranchs: "+ maxBranchs);
 					
 					createChildren(formules, (JTextArea) e.getComponent());
 					
 					
 					//fix GUI and add listener to the textArea generated
 					pane.revalidate();
-					//addMouseListener(firstSplit);
 					
 					
 					//remove listener for this area
@@ -205,7 +161,7 @@ public class FormulePanel extends JPanel {
 	
 	
 	
-	private int countSymbolesPropositionnels(String str) {
+	/*private int countSymbolesPropositionnels(String str) {
 		int count = 0;
 		for ( int i = 0 ; i < str.length() ; i++ ) {
 			if ( str.charAt(i) == '∧' || str.charAt(i) == '∨' || str.charAt(i) == '¬' || ((int) str.charAt(i)) == 8594) {
@@ -213,7 +169,7 @@ public class FormulePanel extends JPanel {
 			}
 		}
 		return count;
-	}
+	}*/
 	
 	
 	/*
@@ -221,7 +177,7 @@ public class FormulePanel extends JPanel {
 	 */
 	private int getNearestLeftGridX(JTextArea directFather) {
 		
-		System.out.println("-------NEAREST LEFT----------");
+		//System.out.println("-------NEAREST LEFT----------");
 		
 		JTextArea actual = directFather;
 		boolean gridXHasOnlyReduced = true;
@@ -236,14 +192,14 @@ public class FormulePanel extends JPanel {
 			}
 		}
 		
-		System.out.println("actual = directFather: "+ actual.equals(directFather));
+		/*System.out.println("actual = directFather: "+ actual.equals(directFather));
 		System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced);
 		
-		System.out.println("---------------------");
+		System.out.println("---------------------");*/
 		if ( actual.equals(directFather) || (actual.equals(rootArea) && gridXHasOnlyReduced) )
 			return 0;
 		
-		System.out.println("nearestLeftGridX: "+textAreaToGridX.get(actual));
+		//System.out.println("nearestLeftGridX: "+textAreaToGridX.get(actual));
 		return textAreaToGridX.get(actual);
 	}
 	
@@ -252,7 +208,7 @@ public class FormulePanel extends JPanel {
 	 */
 	private int getNearestRightGridX(JTextArea directFather) {
 		
-		System.out.println("-------NEAREST RIGHT----------");
+		//System.out.println("-------NEAREST RIGHT----------");
 		
 		JTextArea actual = directFather;
 		boolean gridXHasOnlyReduced = true;
@@ -263,15 +219,15 @@ public class FormulePanel extends JPanel {
 			} else {
 				actual = childrenToParent.get(actual);
 				gridXHasOnlyReduced = false;
-				System.out.println("broke at the parent of : "+actual.getText());
+				//System.out.println("broke at the parent of : "+actual.getText());
 				break;
 			}
 		}
 		
-		System.out.println("actual = directFather: "+ actual.equals(directFather));
+		/*System.out.println("actual = directFather: "+ actual.equals(directFather));
 		System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced);
 		
-		System.out.println("---------------------");
+		System.out.println("---------------------");*/
 		if ( actual.equals(directFather) || (actual.equals(rootArea) && gridXHasOnlyReduced) )
 			return maxBranchs;
 		
@@ -305,7 +261,7 @@ public class FormulePanel extends JPanel {
 		addMouseListener(secondSplit);
 		
 		
-		System.out.println("RIGHT CHILD /// fatherGridX: "+ fatherGridX + " gridX: "+ paneConstraints.gridx + " NearestRight: "+ getNearestRightGridX(father) );
+		//System.out.println("RIGHT CHILD /// fatherGridX: "+ fatherGridX + " gridX: "+ paneConstraints.gridx + " NearestRight: "+ getNearestRightGridX(father) );
 		
 		
 	}
@@ -333,10 +289,6 @@ public class FormulePanel extends JPanel {
 		textAreaToGridY.put(firstSplit, paneConstraints.gridy);
 		childrenToParent.put(firstSplit, father);
 		addMouseListener(firstSplit);
-		
-		
-		
-		System.out.println("LEFT CHILD /// fatherGridX: "+ fatherGridX + " gridX: "+ paneConstraints.gridx + " Nearest Left: " + getNearestLeftGridX(father));
 		
 	}
 	
@@ -369,8 +321,7 @@ public class FormulePanel extends JPanel {
 	
 	
 	private void createChildren(SplitFormule formule, JTextArea father) {
-		if ( formule.getOp() == Operateurs.AND ) { //un seul couple est retourné
-			System.out.println("CREATING ALONE CHILD");
+		if ( formule.getOp() == Operateurs.AND ) {
 			createAloneChild(formule, father);
 		}
 		else {

@@ -1,7 +1,6 @@
 package projetlogique.formules;
 
 import projetlogique.exceptions.CannotParseOperatorException;
-import projetlogique.utils.Couple;
 
 import java.util.ArrayList;
 
