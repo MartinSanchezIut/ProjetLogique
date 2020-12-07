@@ -2,14 +2,18 @@ package projetlogique.formules;
 
 public class SplitFormule {
 
-    private Formule f1;
-    private Formule f2;
-    private Operateurs op;
+    private Formule f1, f2;
+    private Operateur op;
 
-    public SplitFormule(Formule f1, Operateurs op, Formule f2) {
+    public SplitFormule(Formule f1, Operateur op, Formule f2) {
         this.f1 = f1;
-        this.f2 = f2;
         this.op = op;
+        this.f2 = f2;
+    }
+
+    @Override
+    public String toString() {
+        return f1 +" "+ op.getPrint() +" "+ f2;
     }
 
     public Formule getF1() {
@@ -20,16 +24,7 @@ public class SplitFormule {
         return f2;
     }
 
-    public Operateurs getOp() {
+    public Operateur getOp() {
         return op;
-    }
-
-    @Override
-    public String toString() {
-        return "SplitFormule{" +
-                "f1=" + f1 +
-                ", f2=" + f2 +
-                ", op=" + op +
-                '}';
     }
 }

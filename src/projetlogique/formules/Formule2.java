@@ -2,17 +2,17 @@ package projetlogique.formules;
 
 import java.util.ArrayList;
 
-public class Formule {
+public class Formule2 {
 
     public static Boolean DEBUG = false;
 
     boolean isNegative;
-    String f1;
+    Formule2 f1;
     Operateur op;
-    String f2;
+    Formule2 f2;
 
 
-    public Formule(String formule) {
+    public Formule2(String formule) {
         //   On fais une copie du paramètre, puis on lui retire tout les espaces " "
         String copie = new String(formule) ;
         copie = copie.replaceAll(" ", "") ;
@@ -32,10 +32,8 @@ public class Formule {
 
         //   Si il y a moins de 3 caractères ce n'est pas une formule mais un litéral (positif ou négatif)
         if (copie.length() < 3) {
-            if (DEBUG) {System.out.println("Litéral : " + copie);}
-            this.f1 = copie;
-            this.op = null ;
-            this.f2 = null;
+            System.out.println("Litéral : " + copie);
+            // dans ce cas on a un litéral
 
         }else {
             //   Dans ce cas on a une formule
@@ -87,7 +85,7 @@ public class Formule {
             }
             /*    DEBUG */
             if(DEBUG) {System.out.println("-=-=-=-=-=-==-=-=-=-=-=-=-=");System.out.println("Indexs " + index);System.out.println("Priorites " + priorite);System.out.println("Operateurs " + operateursTrouve);
-                System.out.println("Op Prin: " + operateursTrouve.get(minIndex) + " [ i: " + index.get(minIndex) + ", p: " + minPrio + "]");}
+            System.out.println("Op Prin: " + operateursTrouve.get(minIndex) + " [ i: " + index.get(minIndex) + ", p: " + minPrio + "]");}
 
             String p1 = copie.substring(0, index.get(minIndex)) ;
             String p2 = copie.substring(index.get(minIndex)+1, taille) ;
@@ -96,19 +94,19 @@ public class Formule {
 
 
             this.op = operateursTrouve.get(minIndex) ;
-            this.f1 = p1;
-            this.f2 = p2;
+            this.f1 = new Formule2(p1);
+            this.f2 = new Formule2(p2);
         }
     }
 
-    public Formule(boolean isNegative, String f1, Operateur op, String f2) {
+    public Formule2(boolean isNegative, Formule2 f1, Operateur op, Formule2 f2) {
         this.isNegative = isNegative;
         this.f1 = f1;
         this.op = op;
         this.f2 = f2;
     }
 
-    public Formule(Formule f) {
+    public Formule2(Formule2 f) {
         this.isNegative = f.isNegative;
         this.f1 = f.f1;
         this.op = f.op;
@@ -117,66 +115,38 @@ public class Formule {
 
     @Override
     public String toString() {
-        String ret = "" ;
-        if (op == null) { // C'est donc un litéral
-            if (isNegative) {
-                ret += Operateur.NOT.getPrint();
-            }
-            ret += f1;
-        }else {
-            if (isNegative) {
-                ret += Operateur.NOT.getPrint();
-                ret += "(" + f1;
-                ret += " " + op.getPrint() + " ";
-                ret += f2 + ")";
-            }else {
-                ret += f1;
-                ret += " " + op.getPrint() + " ";
-                ret += f2;
-            }
+        if (isNegative) {
+            return Operateur.NOT.getPrint() + "(" + f1 + op.getPrint() + f2 + ")";
+        } else {
+            return "(" + f1 + ") " + op.getPrint() + " (" + f2 + ")" ;
         }
-        return ret ;
     }
 
-    public SplitFormule split() {
-        Formule ret = new Formule(this);
+    public Formule2 split() {
+        evalNegative();
+        return this;
+    }
 
-        if (ret.op == null) { return null;}
-
-        Formule p1 = new Formule(ret.f1);
-        Formule p2 = new Formule(ret.f2);
-        if (DEBUG) {
-            System.out.println(ret.isNegative);
-            System.out.println(p1);
-            System.out.println(ret.op);
-            System.out.println(p2);
-        }
-
-        if (ret.isNegative) {
-            switch (ret.op) {
+    private void evalNegative() {
+        if (isNegative) {
+            switch (op) {
                 case AND -> {
-                    p1.isNegative = !p1.isNegative;
-                    p2.isNegative = !p2.isNegative;
-                    ret.op = Operateur.OR ;
+                    f1.isNegative = !f1.isNegative;
+                    f2.isNegative = !f2.isNegative;
+                    op = Operateur.OR ;
                 }
                 case OR -> {
-                    p1.isNegative = !p1.isNegative;
-                    p2.isNegative = !p2.isNegative;
-                    ret.op = Operateur.AND ;
+                    f1.isNegative = !f1.isNegative;
+                    f2.isNegative = !f2.isNegative;
+                    op = Operateur.AND ;
                 }
                 case IMPLICATION -> {
-              //      p1.isNegative = !p1.isNegative;
-                    p2.isNegative = !p2.isNegative;
-                    ret.op = Operateur.AND ;
+                    f1.isNegative = !f1.isNegative;
+              //    f2.isNegative = f2.isNegative;
+                    op = Operateur.OR ;
                 }
             }
-        }else {
-            if (ret.op == Operateur.IMPLICATION) {
-                p1.isNegative = !p1.isNegative;
-          //    p2.isNegative = !p2.isNegative;
-                ret.op = Operateur.OR;
-            }
         }
-        return new SplitFormule(p1, ret.op, p2);
     }
+
 }
