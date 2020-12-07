@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Formule {
 
-    public static Boolean DEBUG = false;
+    public static Boolean DEBUG = true;
 
     boolean isNegative;
     String f1;
@@ -154,17 +154,17 @@ public class Formule {
 
         if (ret.isNegative) {
             switch (ret.op) {
-                case AND -> {
+                case AND : {
                     p1.isNegative = !p1.isNegative;
                     p2.isNegative = !p2.isNegative;
                     ret.op = Operateur.OR ;
                 }
-                case OR -> {
+                case OR : {
                     p1.isNegative = !p1.isNegative;
                     p2.isNegative = !p2.isNegative;
                     ret.op = Operateur.AND ;
                 }
-                case IMPLICATION -> {
+                case IMPLICATION : {
               //      p1.isNegative = !p1.isNegative;
                     p2.isNegative = !p2.isNegative;
                     ret.op = Operateur.AND ;

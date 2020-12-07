@@ -24,7 +24,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import projetlogique.formules.Formule;
-import projetlogique.formules.Operateurs;
+import projetlogique.formules.Operateur;
 import projetlogique.formules.SplitFormule;
 
 public class FormulePanel extends JPanel {
@@ -354,7 +354,7 @@ public class FormulePanel extends JPanel {
 	
 	
 	private void createChildren(SplitFormule formule, JTextArea father) {
-		if ( formule.getOp() == Operateurs.AND ) {
+		if ( formule.getOp() == Operateur.AND ) {
 			createAloneChild(formule, father);
 		}
 		else {

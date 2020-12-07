@@ -5,28 +5,28 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import projetlogique.exceptions.CannotParseOperatorException;
-import projetlogique.formules.Operateurs;
+import projetlogique.formules.Operateur;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestOperateur {
 
-    private Operateurs non;
-    private Operateurs and;
-    private Operateurs or;
-    private Operateurs impl;
-    private Operateurs equi;
+    private Operateur non;
+    private Operateur and;
+    private Operateur or;
+    private Operateur impl;
+    private Operateur equi;
 
 
 
     @BeforeEach
     public void setUp() {
-        non = Operateurs.NOT;
-        and = Operateurs.AND;
-        or = Operateurs.OR;
-        impl = Operateurs.IMPLICATION;
-        equi = Operateurs.EQUIVALENCE ;
+        non = Operateur.NOT;
+        and = Operateur.AND;
+        or = Operateur.OR;
+        impl = Operateur.IMPLICATION;
+        equi = Operateur.EQUIVALENCE ;
     }
 
     @Test
@@ -40,6 +40,6 @@ public class TestOperateur {
     }
     @Test
     public void testParseThrow() {
-        assertThrows(CannotParseOperatorException.class, () -> {Operateurs.parse('a'); });
+        assertThrows(CannotParseOperatorException.class, () -> {Operateur.parse('a'); });
     }
 }

@@ -130,17 +130,17 @@ public class Formule2 {
     private void evalNegative() {
         if (isNegative) {
             switch (op) {
-                case AND -> {
+                case AND : {
                     f1.isNegative = !f1.isNegative;
                     f2.isNegative = !f2.isNegative;
                     op = Operateur.OR ;
                 }
-                case OR -> {
+                case OR : {
                     f1.isNegative = !f1.isNegative;
                     f2.isNegative = !f2.isNegative;
                     op = Operateur.AND ;
                 }
-                case IMPLICATION -> {
+                case IMPLICATION : {
                     f1.isNegative = !f1.isNegative;
               //    f2.isNegative = f2.isNegative;
                     op = Operateur.OR ;
