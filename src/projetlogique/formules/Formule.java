@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Formule {
 
-    public static Boolean DEBUG = true;
+    public static Boolean DEBUG = false;
 
     boolean isNegative;
     String f1;
