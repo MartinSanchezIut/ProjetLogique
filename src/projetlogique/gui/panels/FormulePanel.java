@@ -191,7 +191,6 @@ public class FormulePanel extends JPanel {
 						
 						JTextArea clickedTxt = (JTextArea) e.getComponent();
 						
-						String str = ((JTextArea) e.getComponent()).getText().replaceAll(" ", "");
 						
 						if ( containsContradiction(clickedTxt) ) {
 							JOptionPane.showMessageDialog(null, "Contradiction trouvée !", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
@@ -339,7 +338,7 @@ public class FormulePanel extends JPanel {
 			JTextArea grandFather = childrenToParent.get(father);
 			for ( JTextArea txtArea : getChildrenFromFather(grandFather) ) {
 				
-				if ( !txtArea.equals(father) ) {
+				if ( !txtArea.equals(father) && textAreaToGridX.get(txtArea) == fatherGridX ) {
 					//remove mouselistener from the upper one
 					for ( MouseListener m : txtArea.getMouseListeners() ) {
 						txtArea.removeMouseListener(m);
@@ -421,7 +420,7 @@ public class FormulePanel extends JPanel {
 			JTextArea grandFather = childrenToParent.get(father);
 			for ( JTextArea txtArea : getChildrenFromFather(grandFather) ) {
 				
-				if ( !txtArea.equals(father) ) {
+				if ( !txtArea.equals(father) && textAreaToGridX.get(txtArea) == fatherGridX ) {
 					//remove mouselistener from the upper one
 					for ( MouseListener m : txtArea.getMouseListeners() ) {
 						txtArea.removeMouseListener(m);
