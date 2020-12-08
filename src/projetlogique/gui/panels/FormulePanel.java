@@ -367,7 +367,8 @@ public class FormulePanel extends JPanel {
 		
 		JTextArea secondSplit = new JTextArea();
 		secondSplit.setEditable(false);
-		secondSplit.setText(text);
+		String str = text.replaceAll("¬¬", "");
+		secondSplit.setText(str);
 		secondSplit.setBounds(5, 30, 990, 30);
 		secondSplit.setBackground(marron);
 		paneConstraints.gridx = actualGridX;
@@ -449,7 +450,8 @@ public class FormulePanel extends JPanel {
 		
 		JTextArea firstSplit = new JTextArea();
 		firstSplit.setEditable(false);
-		firstSplit.setText(text);
+		String str = text.replaceAll("¬¬", "");
+		firstSplit.setText(str);
 		firstSplit.setBounds(5, 30, 990, 30);
 		firstSplit.setBackground(marron);
 		paneConstraints.gridx = actualGridX;
@@ -530,7 +532,8 @@ public class FormulePanel extends JPanel {
 		
 		JTextArea firstSplit = new JTextArea();
 		firstSplit.setEditable(false);
-		firstSplit.setText(formule.getF1().toString());
+		String str = formule.getF1().toString().replaceAll("¬¬", "");
+		firstSplit.setText(str);
 		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 		firstSplit.setBounds(5, 30, 990, 30);
 		firstSplit.setBackground(marron);
@@ -553,8 +556,8 @@ public class FormulePanel extends JPanel {
 		
 		JTextArea secondSplit = new JTextArea();
 		secondSplit.setEditable(false);
-		secondSplit.setText(formule.getF2().toString());
-		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
+		str = formule.getF2().toString().replaceAll("¬¬", "");
+		secondSplit.setText(str);
 		secondSplit.setBounds(5, 30, 990, 30);
 		secondSplit.setBackground(marron);
 		paneConstraints.gridx = fatherGridX;

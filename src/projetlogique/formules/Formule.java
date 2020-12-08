@@ -166,16 +166,19 @@ public class Formule {
                     p1.isNegative = !p1.isNegative;
                     p2.isNegative = !p2.isNegative;
                     ret.op = Operateur.OR ;
+                    break;
                 }
                 case OR : {
                     p1.isNegative = !p1.isNegative;
                     p2.isNegative = !p2.isNegative;
                     ret.op = Operateur.AND ;
+                    break;
                 }
                 case IMPLICATION : {
               //      p1.isNegative = !p1.isNegative;
                     p2.isNegative = !p2.isNegative;
                     ret.op = Operateur.AND ;
+                    break;
                 }
             }
         }else {
