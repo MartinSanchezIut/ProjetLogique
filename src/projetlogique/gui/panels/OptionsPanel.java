@@ -58,45 +58,45 @@ public class OptionsPanel extends JPanel{
 		int rdm = new Random().nextInt(20)+1;
 		switch( rdm ) {
 			case 1:
-				return "p → ((p → q) → q)";
+				return "¬(p → ((p → q) → q))";
 			case 2:
-				return "p → (¬q → ¬(p → q))";
+				return "¬(p → (¬q → ¬(p → q)))";
 			case 3:
-				return "(¬p → ¬q) → (q → p)";
+				return "¬((¬p → ¬q) → (q → p))";
 			case 4:
-				return "(p ∧ (p → q) ∧ ((p → q) → r)) → (p ∧ q ∧ r)";
+				return "¬((p ∧ (p → q) ∧ ((p → q) → r)) → (p ∧ q ∧ r))";
 			case 5:
-				return "(p → q) → ((q → r) → (p → r))";
+				return "¬((p → q) → ((q → r) → (p → r)))";
 			case 6:
-				return " (((s ∧ p) → (q ∧ r)) ∧ (¬r ∨ ¬q) ∧ p) → ¬s";
+				return "¬((((s ∧ p) → (q ∧ r)) ∧ (¬r ∨ ¬q) ∧ p) → ¬s)";
 			case 7:
-				return "((p → q) ∧ ((r ∧ s) → p) ∧ (t → r) ∧ (s ∧ t)) → q";
+				return "¬(((p → q) ∧ ((r ∧ s) → p) ∧ (t → r) ∧ (s ∧ t)) → q)";
 			case 8:
-				return "(p → (q → r)) → ((p → q) → (p → r))";
+				return "¬((p → (q → r)) → ((p → q) → (p → r)))";
 			case 9:
-				return "(q → p) → ((¬q → p) → p)";
+				return "¬((q → p) → ((¬q → p) → p))";
 			case 10:
-				return "p → (q → r) → ((p → r) ∨ (q → r))";
+				return "¬(p → (q → r) → ((p → r) ∨ (q → r)))";
 			case 11:
-				return "((p → r) ∨ (q → r)) → (p → (q → r))";
+				return "¬(((p → r) ∨ (q → r)) → (p → (q → r)))";
 			case 12:
-				return "((p → q) ∧ (q → p)) ∨ (p ∧ ¬q) ∨ (¬p ∧ q)";
+				return "¬(((p → q) ∧ (q → p)) ∨ (p ∧ ¬q) ∨ (¬p ∧ q))";
 			case 13:
-				return "(¬(a ∧ b) → (¬a ∨ ¬b))";
+				return "¬((¬(a ∧ b) → (¬a ∨ ¬b)))";
 			case 14:
-				return "((¬a ∨ ¬b) → ¬(a ∧ b))";
+				return "¬(((¬a ∨ ¬b) → ¬(a ∧ b)))";
 			case 15:
-				return "((a ∨ b ∨ ¬c) ∧ (a ∨ b ∨ c) ∧ (a ∨ ¬b)) → a";
+				return "¬(((a ∨ b ∨ ¬c) ∧ (a ∨ b ∨ c) ∧ (a ∨ ¬b)) → a)";
 			case 16:
-				return "(u ∧ (w → v) ∧ (t → v) ∧ (u → (w ∨ t))) → v";
+				return "¬((u ∧ (w → v) ∧ (t → v) ∧ (u → (w ∨ t))) → v)";
 			case 17:
-				return "r ∨ ((p ∧ (p → q) ∧ ((p → q) → r)) → (p ∧ q ∧ r)) ∧ (t → ¬r)";
+				return "¬(r ∨ ((p ∧ (p → q) ∧ ((p → q) → r)) → (p ∧ q ∧ r)) ∧ (t → ¬r))";
 			case 18:
-				return "(p ∨ (q → ¬p)) ∨ ((p ∧ (p → q) ∧ ((p → q) → r)) → (p ∧ q ∧ r))";
+				return "¬((p ∨ (q → ¬p)) ∨ ((p ∧ (p → q) ∧ ((p → q) → r)) → (p ∧ q ∧ r)))";
 			case 19:
-				return "((p → (q → r)) → ((q → r) ∨ (q → r))) → ((¬(¬q → ¬p)) ∨ ¬q ∨ q)";
+				return "¬(((p → (q → r)) → ((q → r) ∨ (q → r))) → ((¬(¬q → ¬p)) ∨ ¬q ∨ q))";
 			default:
-				return "((((s ∧ p) → (q ∧ r)) ∧ (¬r ∨ ¬q) ∧ p) ∧ (t ∧ (s → ¬t))) → ¬s";
+				return "¬(((((s ∧ p) → (q ∧ r)) ∧ (¬r ∨ ¬q) ∧ p) ∧ (t ∧ (s → ¬t))) → ¬s)";
 		
 		}
 	}
