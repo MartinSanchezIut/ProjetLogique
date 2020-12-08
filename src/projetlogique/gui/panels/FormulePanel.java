@@ -26,9 +26,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import projetlogique.Main;
 import projetlogique.formules.Formule;
 import projetlogique.formules.Operateur;
 import projetlogique.formules.SplitFormule;
+import projetlogique.score.Score;
 
 public class FormulePanel extends JPanel {
 	
@@ -125,9 +127,9 @@ public class FormulePanel extends JPanel {
 				
 				pane.revalidate();
 				pane.repaint();
-				
-				
-				OptionsPanel.setPoints(0);
+
+				Main.score = new Score();  // J'ai changé ici
+				OptionsPanel.setPoints(Main.score.getScore());  // J'ai changé ici
 			}
 		});
 		
@@ -178,8 +180,8 @@ public class FormulePanel extends JPanel {
 							e.getComponent().removeMouseListener(m);
 						}
 						
-						
-						OptionsPanel.setPoints(OptionsPanel.getPoints()+1);
+						Main.score.addScore(100);  // J'ai changé ici
+						OptionsPanel.setPoints(Main.score.getScore()); // J'ai changé ici
 					}
 					
 					else if ( e.getButton() == 3 ) { //clic droit
