@@ -20,21 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0b0eced-9595-448e-b3bd-4861d1bc2dce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/projetlogique/Score.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/SplitPremier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/exceptions/CannotParseOperatorException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Formule.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Operateurs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/SplitFormule.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/Fenetre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/utils/Arbre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/utils/Couple.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/utils/Noeud.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogiqueTests/TestOperateur.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetlogique/gui/panels/OptionsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/gui/panels/OptionsPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +72,7 @@
       <recent name="projetlogique.exceptions" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ConsoleMain">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="ConsoleMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="projetlogique.ConsoleMain" />
       <module name="ProjetLogique" />
@@ -124,15 +112,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,9 +156,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ConsoleMain" />
         <item itemvalue="Application.SplitPremier" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.testOperateur.testParseThrow" />
         <item itemvalue="JUnit.testOperateur" />
       </list>
@@ -200,6 +186,7 @@
       <workItem from="1607335855869" duration="2038000" />
       <workItem from="1607354006708" duration="944000" />
       <workItem from="1607356823583" duration="139000" />
+      <workItem from="1607429197969" duration="571000" />
     </task>
     <servers />
   </component>

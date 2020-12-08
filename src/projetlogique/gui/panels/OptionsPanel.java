@@ -1,5 +1,7 @@
 package projetlogique.gui.panels;
 
+import projetlogique.Score;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -41,12 +43,14 @@ public class OptionsPanel extends JPanel{
 				FormulePanel.setTextInTextField(getRandomFormule());
 			}
 		});
-		
-		
+
+
+
+
 		points = new JTextArea("Point(s) : 0");
 		points.setBackground(new Color(196, 147, 105));
 		constraints.gridx = 0;
-		constraints.gridy = 1;
+		constraints.gridy = 4;
 		add(points, constraints);
 		
 	}
