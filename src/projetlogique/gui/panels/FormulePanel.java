@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import projetlogique.Main;
 import projetlogique.formules.Formule;
 import projetlogique.formules.Operateur;
 import projetlogique.formules.SplitFormule;
@@ -178,8 +179,8 @@ public class FormulePanel extends JPanel {
 							e.getComponent().removeMouseListener(m);
 						}
 						
-						
-						OptionsPanel.setPoints(OptionsPanel.getPoints()+1);
+						Main.score.addScore(100);  // J'ai changé ici
+						OptionsPanel.setPoints(Main.score.getScore()); // J'ai changé ici
 					}
 					
 					else if ( e.getButton() == 3 ) { //clic droit
@@ -468,6 +469,8 @@ public class FormulePanel extends JPanel {
 		
 		int fatherGridX = textAreaToGridX.get(father);
 		int fatherGridY = nearestGridY(father)+3/*textAreaToGridY.get(father)+2*/; //add one to add a space between the next text and the father
+		
+		System.out.println("gridY: "+fatherGridY);
 		
 		if ( childrenToParent.get(father) != null ) {// grandfather is not null
 			
