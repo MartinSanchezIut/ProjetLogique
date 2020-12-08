@@ -232,19 +232,6 @@ public class FormulePanel extends JPanel {
 	}
 	
 	
-	
-	
-	/*private int countSymbolesPropositionnels(String str) {
-		int count = 0;
-		for ( int i = 0 ; i < str.length() ; i++ ) {
-			if ( str.charAt(i) == '∧' || str.charAt(i) == '∨' || str.charAt(i) == '¬' || ((int) str.charAt(i)) == 8594) {
-				count++;
-			}
-		}
-		return count;
-	}*/
-	
-	
 	/*
 	 * Get the nearest left grid x by going up in the tree
 	 */
@@ -287,7 +274,7 @@ public class FormulePanel extends JPanel {
 	 */
 	private int getNearestRightGridX(JTextArea directFather) {
 		
-		System.out.println("-------NEAREST RIGHT----------");
+		//System.out.println("-------NEAREST RIGHT----------");
 		
 		JTextArea actual = directFather;
 		boolean gridXHasOnlyReduced = true;
@@ -296,13 +283,13 @@ public class FormulePanel extends JPanel {
 		
 		while ( childrenToParent.get(actual) != null ) { //tant qu'il y a un père
 			
-			System.out.println("fatherGridX: "+textAreaToGridX.get(childrenToParent.get(actual)));
-			System.out.println("GridX: "+textAreaToGridX.get(actual));
+			//System.out.println("fatherGridX: "+textAreaToGridX.get(childrenToParent.get(actual)));
+			//System.out.println("GridX: "+textAreaToGridX.get(actual));
 			
 			if ( textAreaToGridX.get(childrenToParent.get(actual)) <= textAreaToGridX.get(actual) ) {
 				actual = childrenToParent.get(actual);
 				wasAlwaysEquals = false;
-				System.out.println("actual: "+actual.toString());
+				//System.out.println("actual: "+actual.toString());
 			} else {
 				actual = childrenToParent.get(actual);
 				
@@ -310,19 +297,19 @@ public class FormulePanel extends JPanel {
 					wasAlwaysEquals = false;
 				
 				gridXHasOnlyReduced = false;
-				System.out.println("broke at : "+actual.getText()+ " gridX: "+ textAreaToGridX.get(actual));
+				//System.out.println("broke at : "+actual.getText()+ " gridX: "+ textAreaToGridX.get(actual));
 				break;
 			}
 			
 		}
 		
-		System.out.println("actual: "+actual.getText().toString());
-		System.out.println("nearestRightGridX: "+textAreaToGridX.get(actual));
+		//System.out.println("actual: "+actual.getText().toString());
+		//System.out.println("nearestRightGridX: "+textAreaToGridX.get(actual));
 		
-		System.out.println("actual = directFather: "+ actual.equals(directFather));
-		System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced + " wasAlwaysEquals: " + wasAlwaysEquals);
+		//System.out.println("actual = directFather: "+ actual.equals(directFather));
+		//System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced + " wasAlwaysEquals: " + wasAlwaysEquals);
 		
-		System.out.println("---------------------");
+		//System.out.println("---------------------");
 		if ( actual.equals(directFather) || (actual.equals(rootArea) && gridXHasOnlyReduced) || wasAlwaysEquals )
 			return maxBranchs;
 		
@@ -370,7 +357,7 @@ public class FormulePanel extends JPanel {
 					if ( oldFormule.getText().length() > 2 )
 						addMouseListener(oldFormule);
 					
-					System.out.println(oldFormule.getText()+ " : "+ gridY);
+					//System.out.println(oldFormule.getText()+ " : "+ gridY);
 				}
 			}
 			
@@ -452,7 +439,7 @@ public class FormulePanel extends JPanel {
 					if ( oldFormule.getText().length() > 2 )
 						addMouseListener(oldFormule);
 					
-					System.out.println(oldFormule.getText()+ " : "+ gridY);
+					//System.out.println(oldFormule.getText()+ " : "+ gridY);
 				}
 			}
 			
@@ -490,7 +477,7 @@ public class FormulePanel extends JPanel {
 		paneConstraints.insets = new Insets(10, 0, 0, 0);
 		pane.add(separator, paneConstraints);
 		
-		System.out.println("LEFT CHILD /// fatherGridX: "+ fatherGridX + " gridX: "+ paneConstraints.gridx + " NearestRight: "+ getNearestLeftGridX(father) );
+		//System.out.println("LEFT CHILD /// fatherGridX: "+ fatherGridX + " gridX: "+ paneConstraints.gridx + " NearestRight: "+ getNearestLeftGridX(father) );
 		
 		
 	}
@@ -503,7 +490,7 @@ public class FormulePanel extends JPanel {
 		int fatherGridX = textAreaToGridX.get(father);
 		int fatherGridY = nearestGridY(father)+3/*textAreaToGridY.get(father)+2*/; //add one to add a space between the next text and the father
 		
-		System.out.println("gridY: "+fatherGridY);
+		//System.out.println("gridY: "+fatherGridY);
 		
 		if ( childrenToParent.get(father) != null ) {// grandfather is not null
 			
@@ -534,7 +521,7 @@ public class FormulePanel extends JPanel {
 					childrenToParent.put(oldFormule, father);
 					addMouseListener(oldFormule);
 					
-					System.out.println(oldFormule.getText()+ " : "+ fatherGridY);
+					//System.out.println(oldFormule.getText()+ " : "+ fatherGridY);
 				}
 			}
 			
@@ -559,7 +546,7 @@ public class FormulePanel extends JPanel {
 		if ( firstSplit.getText().length() > 2 )
 			addMouseListener(firstSplit);
 		
-		System.out.println(firstSplit.getText()+ " : "+ fatherGridY);
+		//System.out.println(firstSplit.getText()+ " : "+ fatherGridY);
 		
 		
 		
@@ -582,7 +569,7 @@ public class FormulePanel extends JPanel {
 		if ( secondSplit.getText().length() > 2 )
 			addMouseListener(secondSplit);
 		
-		System.out.println(secondSplit.getText()+ " : "+ fatherGridY);
+		//System.out.println(secondSplit.getText()+ " : "+ fatherGridY);
 		
 		
 		JTextArea separator = new JTextArea();
@@ -597,7 +584,7 @@ public class FormulePanel extends JPanel {
 		paneConstraints.insets = new Insets(10, 0, 0, 0);
 		pane.add(separator, paneConstraints);
 		
-		System.out.println(separator.getText()+ " : "+ (fatherGridY+1));
+		//System.out.println(separator.getText()+ " : "+ (fatherGridY+1));
 	}
 	
 	
