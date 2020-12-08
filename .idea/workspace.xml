@@ -20,19 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0b0eced-9595-448e-b3bd-4861d1bc2dce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/projetlogique/score/Score.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/Score.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Formule$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Formule$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Formule.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Formule.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/OptionsPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/OptionsPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/OptionsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/OptionsPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projetlogique/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projetlogique/Score.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projetlogique/gui/panels/FormulePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/gui/panels/FormulePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projetlogique/gui/panels/OptionsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/gui/panels/OptionsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/score/Score.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/score/Score.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetlogique/formules/Formule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/formules/Formule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +62,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -82,7 +76,7 @@
       <recent name="projetlogique.exceptions" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.ConsoleMain">
     <configuration name="ConsoleMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="projetlogique.ConsoleMain" />
       <module name="ProjetLogique" />
@@ -166,8 +160,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ConsoleMain" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.SplitPremier" />
         <item itemvalue="JUnit.testOperateur.testParseThrow" />
         <item itemvalue="JUnit.testOperateur" />
@@ -196,7 +190,7 @@
       <workItem from="1607335855869" duration="2038000" />
       <workItem from="1607354006708" duration="944000" />
       <workItem from="1607356823583" duration="139000" />
-      <workItem from="1607429197969" duration="4093000" />
+      <workItem from="1607429197969" duration="6472000" />
     </task>
     <servers />
   </component>

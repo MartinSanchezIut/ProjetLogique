@@ -14,7 +14,7 @@ public class ConsoleMain {
         System.out.println("-*=                     =*- \n");
 
 
-        Formule f = new Formule("¬(" + formule  + ")") ;
+        Formule f = new Formule("¬(¬(" + formule  + "))") ;
         System.out.println("La formule est : " + f.toString());
 
 

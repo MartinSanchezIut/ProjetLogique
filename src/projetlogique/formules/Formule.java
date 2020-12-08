@@ -16,6 +16,9 @@ public class Formule {
         //   On fais une copie du paramètre, puis on lui retire tout les espaces " "
         String copie = new String(formule) ;
         copie = copie.replaceAll(" ", "") ;
+        //   On enlève les Non non
+  //    copie = copie.replaceAll("¬¬", "") ;
+  //    copie = copie.replaceAll("!!", "") ;
 
 
         //   Simplifier les parenthèses
@@ -41,14 +44,18 @@ public class Formule {
             //   Dans ce cas on a une formule
 
             //   Est-ce que notre formule commence par l'operateur 'non', si oui la formule est négative.
+            this.isNegative = false; // Par defaut négatif
+
             Character negative = copie.charAt(0);
             Character next = copie.charAt(1);
-            if( (negative.equals(Operateur.NOT.getPrint()) || negative.equals(Operateur.NOT.getLabel())) && next.equals('(') ){
-                this.isNegative = true;
+            Character last = copie.charAt(copie.length()-1);
+            while ((negative.equals(Operateur.NOT.getPrint()) || negative.equals(Operateur.NOT.getLabel())) && next.equals('(') && last.equals(')')) {
+                this.isNegative = ! isNegative;
                 copie = copie.substring(2, copie.length() - 1);
 
-            } else {
-                this.isNegative = false;
+                negative = copie.charAt(0);
+                next = copie.charAt(1);
+                last = copie.charAt(copie.length()-1);
             }
 
             // DEBUG
@@ -145,6 +152,7 @@ public class Formule {
 
         Formule p1 = new Formule(ret.f1);
         Formule p2 = new Formule(ret.f2);
+
         if (DEBUG) {
             System.out.println(ret.isNegative);
             System.out.println(p1);
