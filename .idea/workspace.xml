@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0b0eced-9595-448e-b3bd-4861d1bc2dce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/projetlogique/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projetlogique/gui/panels/OptionsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/gui/panels/OptionsPanel.java" afterDir="false" />
-    </list>
+    <list default="true" id="c0b0eced-9595-448e-b3bd-4861d1bc2dce" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -186,7 +182,7 @@
       <workItem from="1607335855869" duration="2038000" />
       <workItem from="1607354006708" duration="944000" />
       <workItem from="1607356823583" duration="139000" />
-      <workItem from="1607429197969" duration="571000" />
+      <workItem from="1607429197969" duration="1031000" />
     </task>
     <servers />
   </component>
