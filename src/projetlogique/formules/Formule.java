@@ -185,6 +185,9 @@ public class Formule {
                 ret.op = Operateur.OR;
             }
         }
+        System.out.println("Avant : " + this);
+        System.out.println("Apres : " + p1 + " - " + ret.op + " - " + p2 );
+        System.out.println("| \\/ =- ~      *****      ~ -= \\/ |");
         return new SplitFormule(p1, ret.op, p2);
     }
 }
