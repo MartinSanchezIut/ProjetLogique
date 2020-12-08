@@ -362,6 +362,19 @@ public class FormulePanel extends JPanel {
 		addMouseListener(secondSplit);
 		
 		
+		JTextArea separator = new JTextArea();
+		separator.setEditable(false);
+		separator.setText("-----------------");
+		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
+		separator.setBounds(5, 30, 990, 30);
+		separator.setBackground(new Color(196, 147, 105));
+		paneConstraints.gridx = fatherGridX;
+		paneConstraints.gridy = gridY+1;
+		
+		paneConstraints.insets = new Insets(10, 0, 0, 0);
+		pane.add(separator, paneConstraints);
+		
+		
 		//System.out.println("RIGHT CHILD /// fatherGridX: "+ fatherGridX + " gridX: "+ paneConstraints.gridx + " NearestRight: "+ getNearestRightGridX(father) );
 		
 		
@@ -429,6 +442,19 @@ public class FormulePanel extends JPanel {
 		textAreaToGridY.put(firstSplit, paneConstraints.gridy);
 		childrenToParent.put(firstSplit, father);
 		addMouseListener(firstSplit);
+		
+		
+		JTextArea separator = new JTextArea();
+		separator.setEditable(false);
+		separator.setText("-----------------");
+		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
+		separator.setBounds(5, 30, 990, 30);
+		separator.setBackground(new Color(196, 147, 105));
+		paneConstraints.gridx = fatherGridX;
+		paneConstraints.gridy = gridY+1;
+		
+		paneConstraints.insets = new Insets(10, 0, 0, 0);
+		pane.add(separator, paneConstraints);
 		
 		System.out.println("LEFT CHILD /// fatherGridX: "+ fatherGridX + " gridX: "+ paneConstraints.gridx + " NearestRight: "+ getNearestLeftGridX(father) );
 		
