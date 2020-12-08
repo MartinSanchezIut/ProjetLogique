@@ -21,6 +21,7 @@ public class OptionsPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = -2562596013158468156L;
 	private static JTextArea points;
+	private static JTextArea contradiction;
 
 
 	public static Color bg = new Color(102,179,255);
@@ -47,9 +48,15 @@ public class OptionsPanel extends JPanel{
 			}
 		});
 
+		contradiction = new JTextArea("Contradictions : 0 / ?");
+		contradiction.setBackground(bg);
+		constraints.gridx = 0;
+		constraints.gridy = 8;
+		add(contradiction, constraints);
+
 		JButton termine = new JButton("J'ai fini !");
 		constraints.gridx = 0;
-		constraints.gridy = 2;
+		constraints.gridy = 4;
 		add(termine, constraints);
 
 		termine.addActionListener(new ActionListener() {
@@ -64,7 +71,7 @@ public class OptionsPanel extends JPanel{
 		points = new JTextArea("Point(s) : 0");
 		points.setBackground(bg);
 		constraints.gridx = 0;
-		constraints.gridy = 4;
+		constraints.gridy = 6;
 		add(points, constraints);
 		
 	}
@@ -128,6 +135,11 @@ public class OptionsPanel extends JPanel{
 	
 	public static void setPoints(int points) {
 		OptionsPanel.points.setText("Point(s) : "+points);
+	}
+
+
+	public static void setContradiction(int amount, int total) {
+		OptionsPanel.contradiction.setText("Contradictions : " + amount +" / "+  total);
 	}
 
 }

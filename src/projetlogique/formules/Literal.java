@@ -18,4 +18,15 @@ public class Literal {
             return literal+"";
         }
     }
+
+    public static void main(String[] args) {
+        System.out.println(getNbContradiction(new Formule("¬(p → ((p → q) → q))")));
+    }
+
+    public static int getNbContradiction(Formule f) {
+        System.out.println("Formule : " + f);
+
+        
+        return 0;
+    }
 }
