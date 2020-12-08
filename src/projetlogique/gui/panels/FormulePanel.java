@@ -193,9 +193,14 @@ public class FormulePanel extends JPanel {
 						
 						
 						if ( containsContradiction(clickedTxt) ) {
-							JOptionPane.showMessageDialog(null, "Contradiction trouvée !", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
 							
+							JOptionPane.showMessageDialog(null, "Contradiction trouvée !", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
+														
 							OptionsPanel.addContradiction();
+							
+							if ( OptionsPanel.hasFoundAllContradictions() )
+								OptionsPanel.setPoints(Main.score.addTimeScore());
+							
 							
 							int actualGridX = textAreaToGridX.get(clickedTxt);
 							
