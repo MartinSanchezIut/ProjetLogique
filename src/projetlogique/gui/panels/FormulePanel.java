@@ -195,6 +195,8 @@ public class FormulePanel extends JPanel {
 						if ( containsContradiction(clickedTxt) ) {
 							JOptionPane.showMessageDialog(null, "Contradiction trouvée !", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
 							
+							OptionsPanel.addContradiction();
+							
 							int actualGridX = textAreaToGridX.get(clickedTxt);
 							
 							for ( JTextArea txt : getChildrenFromFather(childrenToParent.get((JTextArea) e.getComponent())) ) {
@@ -603,6 +605,7 @@ public class FormulePanel extends JPanel {
 		}
 		else {
 			int gridY = nearestGridY(father)+3;
+			OptionsPanel.addTtlContradiction();
 			createLeftChild(formule.getF1().toString(), father, gridY);
 			createRightChild(formule.getF2().toString(), father, gridY);
 		}

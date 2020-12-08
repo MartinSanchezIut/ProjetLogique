@@ -22,6 +22,8 @@ public class OptionsPanel extends JPanel{
 	private static final long serialVersionUID = -2562596013158468156L;
 	private static JTextArea points;
 	private static JTextArea contradiction;
+	private static int nbContradiction = 0;
+	private static int nbTtlContradiction = 1;
 
 
 	public static Color bg = new Color(102,179,255);
@@ -48,7 +50,7 @@ public class OptionsPanel extends JPanel{
 			}
 		});
 
-		contradiction = new JTextArea("Contradictions : 0 / ?");
+		contradiction = new JTextArea("Contradictions : 0 / 1");
 		contradiction.setBackground(bg);
 		constraints.gridx = 0;
 		constraints.gridy = 8;
@@ -138,8 +140,20 @@ public class OptionsPanel extends JPanel{
 	}
 
 
-	public static void setContradiction(int amount, int total) {
+	/*public static void setContradiction(int amount, int total) {
 		OptionsPanel.contradiction.setText("Contradictions : " + amount +" / "+  total);
+	}*/
+	
+	
+	public static void addContradiction() {
+		nbContradiction++;
+		OptionsPanel.contradiction.setText("Contradictions : " + nbContradiction +" / "+  nbTtlContradiction);
+	}
+	
+	
+	public static void addTtlContradiction() {
+		nbTtlContradiction++;
+		OptionsPanel.contradiction.setText("Contradictions : " + nbContradiction +" / "+  nbTtlContradiction);
 	}
 
 }
