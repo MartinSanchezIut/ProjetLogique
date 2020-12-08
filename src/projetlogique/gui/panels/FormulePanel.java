@@ -43,11 +43,11 @@ public class FormulePanel extends JPanel {
 	private static int maxBranchs = 0;
 	private Map<JTextArea, JTextArea> childrenToParent = new HashMap<>();
 	private JTextArea rootArea;
-
-	public static Color marron = new Color(179,229,255);
-
+	private Color marron = new Color(196, 147, 105);
+	
 	public FormulePanel() {
 		
+		Color marron = new Color(196, 147, 105);
 		setBackground(marron);
 		
 		setLayout(new GridBagLayout());
@@ -95,7 +95,7 @@ public class FormulePanel extends JPanel {
 				formulesDeveloppees.setEditable(false);
 				formulesDeveloppees.setText(textField.getText());
 				formulesDeveloppees.setBounds(5, 30, 990, 30);
-				formulesDeveloppees.setBackground(marron);
+				formulesDeveloppees.setBackground(new Color(190, 140, 100));
 				if ( maxBranchs % 2 == 1 )
 					paneConstraints.gridx = maxBranchs/2+1;
 				else 
@@ -119,7 +119,7 @@ public class FormulePanel extends JPanel {
 				separator.setText("-----------------");
 				//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 				separator.setBounds(5, 30, 990, 30);
-				separator.setBackground(marron);
+				separator.setBackground(new Color(196, 147, 105));
 				paneConstraints.gridy = 1;
 				paneConstraints.insets = new Insets(10, 0, 0, 0);
 				pane.add(separator, paneConstraints);
@@ -187,20 +187,32 @@ public class FormulePanel extends JPanel {
 					
 					else if ( e.getButton() == 3 ) { //clic droit
 						
+						JTextArea clickedTxt = (JTextArea) e.getComponent();
+						
 						String str = ((JTextArea) e.getComponent()).getText().replaceAll(" ", "");
 						
-						if ( containsContradiction(str) ) {
+						if ( containsContradiction(clickedTxt) ) {
 							JOptionPane.showMessageDialog(null, "Contradiction trouvée !", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
 							
-							Font font = new Font("helvetica", Font.PLAIN, 12);
-							Map attributes = font.getAttributes();
-							attributes.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
-							Font newFont = new Font(attributes); 
-							((JTextArea) e.getComponent()).setFont(newFont);
+							int actualGridX = textAreaToGridX.get(clickedTxt);
 							
-							for ( MouseListener m : e.getComponent().getMouseListeners() ) {
-								e.getComponent().removeMouseListener(m);
+							for ( JTextArea txt : getChildrenFromFather(childrenToParent.get((JTextArea) e.getComponent())) ) {
+								
+								if ( textAreaToGridX.get(txt) == actualGridX ) {
+									
+									Font font = new Font("helvetica", Font.PLAIN, 12);
+									Map attributes = font.getAttributes();
+									attributes.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+									Font newFont = new Font(attributes); 
+									txt.setFont(newFont);
+									
+									for ( MouseListener m : txt.getMouseListeners() ) {
+										txt.removeMouseListener(m);
+									}
+								}
+								
 							}
+							
 						} else {
 							JOptionPane.showMessageDialog(null, "Aucune contradiction ici !", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
 						}
@@ -230,7 +242,7 @@ public class FormulePanel extends JPanel {
 	 */
 	private int getNearestLeftGridX(JTextArea directFather) {
 		
-		System.out.println("-------NEAREST LEFT----------");
+		//System.out.println("-------NEAREST LEFT----------");
 		
 		JTextArea actual = directFather;
 		boolean gridXHasOnlyReduced = true;
@@ -251,14 +263,14 @@ public class FormulePanel extends JPanel {
 			}
 		}
 		
-		System.out.println("actual = directFather: "+ actual.equals(directFather));
-		System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced+ " wasAlwaysEquals: "+ wasAlwaysEquals);
+		//System.out.println("actual = directFather: "+ actual.equals(directFather));
+		//System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced+ " wasAlwaysEquals: "+ wasAlwaysEquals);
 		
-		System.out.println("---------------------");
+		//System.out.println("---------------------");
 		if ( actual.equals(directFather) || (actual.equals(rootArea) && gridXHasOnlyReduced) || wasAlwaysEquals )
 			return 0;
 		
-		System.out.println("nearestLeftGridX: "+textAreaToGridX.get(actual));
+		//System.out.println("nearestLeftGridX: "+textAreaToGridX.get(actual));
 		return textAreaToGridX.get(actual);
 	}
 	
@@ -272,29 +284,40 @@ public class FormulePanel extends JPanel {
 		JTextArea actual = directFather;
 		boolean gridXHasOnlyReduced = true;
 		int gridX = textAreaToGridX.get(actual);
-		boolean wasAlwaysEquals = false;
+		boolean wasAlwaysEquals = true;
 		
 		while ( childrenToParent.get(actual) != null ) { //tant qu'il y a un père
+			
+			System.out.println("fatherGridX: "+textAreaToGridX.get(childrenToParent.get(actual)));
+			System.out.println("GridX: "+textAreaToGridX.get(actual));
+			
 			if ( textAreaToGridX.get(childrenToParent.get(actual)) < textAreaToGridX.get(actual) ) {
 				actual = childrenToParent.get(actual);
+				wasAlwaysEquals = false;
+				System.out.println("actual: "+actual.toString());
 			} else {
 				actual = childrenToParent.get(actual);
 				
-				if ( gridX == textAreaToGridX.get(actual) )
-					wasAlwaysEquals = true;
+				if ( gridX != textAreaToGridX.get(actual) )
+					wasAlwaysEquals = false;
 				
 				gridXHasOnlyReduced = false;
-				System.out.println("broke at the parent of : "+actual.getText());
+				System.out.println("broke at : "+actual.getText()+ " gridX: "+ textAreaToGridX.get(actual));
 				break;
 			}
+			
 		}
 		
+		System.out.println("actual: "+actual.getText().toString());
+		System.out.println("nearestRightGridX: "+textAreaToGridX.get(actual));
+		
 		System.out.println("actual = directFather: "+ actual.equals(directFather));
-		System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced);
+		System.out.println("actual = rootArea : "+ actual.equals(rootArea) +" && hasOnlyReduced: "+ gridXHasOnlyReduced + " wasAlwaysEquals: " + wasAlwaysEquals);
 		
 		System.out.println("---------------------");
 		if ( actual.equals(directFather) || (actual.equals(rootArea) && gridXHasOnlyReduced) || wasAlwaysEquals )
 			return maxBranchs;
+		
 		
 		return textAreaToGridX.get(actual);
 	}
@@ -325,7 +348,7 @@ public class FormulePanel extends JPanel {
 					oldFormule.setEditable(false);
 					oldFormule.setText(txtArea.getText());
 					oldFormule.setBounds(5, 30, 990, 30);
-					oldFormule.setBackground(marron);
+					oldFormule.setBackground(new Color(190, 140, 100));
 					paneConstraints.gridx = actualGridX;
 					paneConstraints.gridy = gridY++;
 					
@@ -350,7 +373,7 @@ public class FormulePanel extends JPanel {
 		secondSplit.setEditable(false);
 		secondSplit.setText(text);
 		secondSplit.setBounds(5, 30, 990, 30);
-		secondSplit.setBackground(marron);
+		secondSplit.setBackground(new Color(190, 140, 100));
 		paneConstraints.gridx = actualGridX;
 		//paneConstraints.gridy = textAreaToGridY.get(father)+2;
 		paneConstraints.gridy = gridY;
@@ -370,7 +393,7 @@ public class FormulePanel extends JPanel {
 		separator.setText("-----------------");
 		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 		separator.setBounds(5, 30, 990, 30);
-		separator.setBackground(marron);
+		separator.setBackground(new Color(196, 147, 105));
 		paneConstraints.gridx = fatherGridX;
 		paneConstraints.gridy = gridY+1;
 		
@@ -407,7 +430,7 @@ public class FormulePanel extends JPanel {
 					oldFormule.setEditable(false);
 					oldFormule.setText(txtArea.getText());
 					oldFormule.setBounds(5, 30, 990, 30);
-					oldFormule.setBackground(marron);
+					oldFormule.setBackground(new Color(190, 140, 100));
 					paneConstraints.gridx = actualGridX;
 					paneConstraints.gridy = gridY++;
 					
@@ -432,7 +455,7 @@ public class FormulePanel extends JPanel {
 		firstSplit.setEditable(false);
 		firstSplit.setText(text);
 		firstSplit.setBounds(5, 30, 990, 30);
-		firstSplit.setBackground(marron);
+		firstSplit.setBackground(new Color(190, 140, 100));
 		paneConstraints.gridx = actualGridX;
 		//paneConstraints.gridy = textAreaToGridY.get(father)+2;
 		paneConstraints.gridy = gridY;
@@ -452,7 +475,7 @@ public class FormulePanel extends JPanel {
 		separator.setText("-----------------");
 		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 		separator.setBounds(5, 30, 990, 30);
-		separator.setBackground(marron);
+		separator.setBackground(new Color(196, 147, 105));
 		paneConstraints.gridx = fatherGridX;
 		paneConstraints.gridy = gridY+1;
 		
@@ -479,7 +502,7 @@ public class FormulePanel extends JPanel {
 			JTextArea grandFather = childrenToParent.get(father);
 			for ( JTextArea txtArea : getChildrenFromFather(grandFather) ) {
 				
-				if ( !txtArea.equals(father) ) {
+				if ( !txtArea.equals(father) && textAreaToGridX.get(txtArea) == fatherGridX ) {
 					//remove mouselistener from the upper one
 					for ( MouseListener m : txtArea.getMouseListeners() ) {
 						txtArea.removeMouseListener(m);
@@ -490,7 +513,7 @@ public class FormulePanel extends JPanel {
 					oldFormule.setEditable(false);
 					oldFormule.setText(txtArea.getText());
 					oldFormule.setBounds(5, 30, 990, 30);
-					oldFormule.setBackground(marron);
+					oldFormule.setBackground(new Color(190, 140, 100));
 					paneConstraints.gridx = fatherGridX;
 					paneConstraints.gridy = fatherGridY++;
 					
@@ -515,7 +538,7 @@ public class FormulePanel extends JPanel {
 		firstSplit.setText(formule.getF1().toString());
 		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 		firstSplit.setBounds(5, 30, 990, 30);
-		firstSplit.setBackground(marron);
+		firstSplit.setBackground(new Color(190, 140, 100));
 		paneConstraints.gridx = fatherGridX;
 		paneConstraints.gridy = fatherGridY++;
 		
@@ -574,7 +597,7 @@ public class FormulePanel extends JPanel {
 	
 	
 	private void createChildren(SplitFormule formule, JTextArea father) {
-		System.out.println("formule.getOp(): "+ formule.getOp());
+		//System.out.println("formule.getOp(): "+ formule.getOp());
 		if ( formule.getOp() == Operateur.AND ) {
 			createAloneChild(formule, father);
 		}
@@ -588,8 +611,36 @@ public class FormulePanel extends JPanel {
 	
 	
 	
-	private boolean containsContradiction(String str) {
-		String[] parts = str.split("\n\n");
+	private boolean containsContradiction(JTextArea clickedTxt) {
+		
+		int actualGridX = textAreaToGridX.get(clickedTxt);
+		
+		for ( JTextArea brother : getChildrenFromFather(childrenToParent.get(clickedTxt)) ) {
+			for ( JTextArea otherBrother : getChildrenFromFather(childrenToParent.get(clickedTxt)) ) {
+				
+				if ( textAreaToGridX.get(brother) == actualGridX && textAreaToGridX.get(otherBrother) == actualGridX ) {
+					
+					if ( !brother.equals(otherBrother) && brother.getText().length() < 3 && otherBrother.getText().length() < 3 ) {
+						if ( brother.getText().contains("¬") && !otherBrother.getText().contains("¬") ) {
+							
+							char c = brother.getText().charAt(brother.getText().indexOf("¬")+1);
+							if ( otherBrother.getText().contains(c+"") )
+								return true;
+							
+						} else if ( otherBrother.getText().contains("¬") && !brother.getText().contains("¬") ) {
+							
+							char c = otherBrother.getText().charAt(brother.getText().indexOf("¬")+1);
+							if ( brother.getText().contains(c+"") ) 
+								return true;
+							
+						}
+					}
+					
+				}
+			}
+		}
+		
+		/*String[] parts = str.split("\n\n");
 		String[] tab = new String[parts.length];
 		
 		for ( int i = 0 ; i < parts.length ; i++ ) {
@@ -629,7 +680,7 @@ public class FormulePanel extends JPanel {
 					}
 				}
 			}
-		}
+		}*/
 		
 		return false;
 	}
