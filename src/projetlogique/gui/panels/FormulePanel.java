@@ -13,7 +13,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,11 +42,10 @@ public class FormulePanel extends JPanel {
 	private static int maxBranchs = 0;
 	private Map<JTextArea, JTextArea> childrenToParent = new HashMap<>();
 	private JTextArea rootArea;
-	private Color marron = new Color(196, 147, 105);
+	private Color marron = new Color(179,229,255);
 	
 	public FormulePanel() {
 		
-		Color marron = new Color(196, 147, 105);
 		setBackground(marron);
 		
 		setLayout(new GridBagLayout());
@@ -71,7 +69,7 @@ public class FormulePanel extends JPanel {
 		constraints.gridx = 0;
 		constraints.gridy = 1;
 		constraints.insets = new Insets(10, 0, 0, 0);
-		pane.setPreferredSize(new Dimension(1500, 700));
+		pane.setPreferredSize(new Dimension(1500, 800));
 		pane.setBorder(BorderFactory.createTitledBorder("Arbre"));
 		
 		pane.setLayout(new GridBagLayout());
@@ -95,7 +93,7 @@ public class FormulePanel extends JPanel {
 				formulesDeveloppees.setEditable(false);
 				formulesDeveloppees.setText(textField.getText());
 				formulesDeveloppees.setBounds(5, 30, 990, 30);
-				formulesDeveloppees.setBackground(new Color(190, 140, 100));
+				formulesDeveloppees.setBackground(marron);
 				if ( maxBranchs % 2 == 1 )
 					paneConstraints.gridx = maxBranchs/2+1;
 				else 
@@ -119,7 +117,7 @@ public class FormulePanel extends JPanel {
 				separator.setText("-----------------");
 				//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 				separator.setBounds(5, 30, 990, 30);
-				separator.setBackground(new Color(196, 147, 105));
+				separator.setBackground(marron);
 				paneConstraints.gridy = 1;
 				paneConstraints.insets = new Insets(10, 0, 0, 0);
 				pane.add(separator, paneConstraints);
@@ -352,7 +350,7 @@ public class FormulePanel extends JPanel {
 					oldFormule.setEditable(false);
 					oldFormule.setText(txtArea.getText());
 					oldFormule.setBounds(5, 30, 990, 30);
-					oldFormule.setBackground(new Color(190, 140, 100));
+					oldFormule.setBackground(marron);
 					paneConstraints.gridx = actualGridX;
 					paneConstraints.gridy = gridY++;
 					
@@ -377,7 +375,7 @@ public class FormulePanel extends JPanel {
 		secondSplit.setEditable(false);
 		secondSplit.setText(text);
 		secondSplit.setBounds(5, 30, 990, 30);
-		secondSplit.setBackground(new Color(190, 140, 100));
+		secondSplit.setBackground(marron);
 		paneConstraints.gridx = actualGridX;
 		//paneConstraints.gridy = textAreaToGridY.get(father)+2;
 		paneConstraints.gridy = gridY;
@@ -397,7 +395,7 @@ public class FormulePanel extends JPanel {
 		separator.setText("-----------------");
 		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 		separator.setBounds(5, 30, 990, 30);
-		separator.setBackground(new Color(196, 147, 105));
+		separator.setBackground(marron);
 		paneConstraints.gridx = fatherGridX;
 		paneConstraints.gridy = gridY+1;
 		
@@ -434,7 +432,7 @@ public class FormulePanel extends JPanel {
 					oldFormule.setEditable(false);
 					oldFormule.setText(txtArea.getText());
 					oldFormule.setBounds(5, 30, 990, 30);
-					oldFormule.setBackground(new Color(190, 140, 100));
+					oldFormule.setBackground(marron);
 					paneConstraints.gridx = actualGridX;
 					paneConstraints.gridy = gridY++;
 					
@@ -459,7 +457,7 @@ public class FormulePanel extends JPanel {
 		firstSplit.setEditable(false);
 		firstSplit.setText(text);
 		firstSplit.setBounds(5, 30, 990, 30);
-		firstSplit.setBackground(new Color(190, 140, 100));
+		firstSplit.setBackground(marron);
 		paneConstraints.gridx = actualGridX;
 		//paneConstraints.gridy = textAreaToGridY.get(father)+2;
 		paneConstraints.gridy = gridY;
@@ -479,7 +477,7 @@ public class FormulePanel extends JPanel {
 		separator.setText("-----------------");
 		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 		separator.setBounds(5, 30, 990, 30);
-		separator.setBackground(new Color(196, 147, 105));
+		separator.setBackground(marron);
 		paneConstraints.gridx = fatherGridX;
 		paneConstraints.gridy = gridY+1;
 		
@@ -517,7 +515,7 @@ public class FormulePanel extends JPanel {
 					oldFormule.setEditable(false);
 					oldFormule.setText(txtArea.getText());
 					oldFormule.setBounds(5, 30, 990, 30);
-					oldFormule.setBackground(new Color(190, 140, 100));
+					oldFormule.setBackground(marron);
 					paneConstraints.gridx = fatherGridX;
 					paneConstraints.gridy = fatherGridY++;
 					
@@ -541,7 +539,7 @@ public class FormulePanel extends JPanel {
 		firstSplit.setText(formule.getF1().toString());
 		//split.setText(formule.getF1().toString()+"\n\n"+formule.getF2().toString());
 		firstSplit.setBounds(5, 30, 990, 30);
-		firstSplit.setBackground(new Color(190, 140, 100));
+		firstSplit.setBackground(marron);
 		paneConstraints.gridx = fatherGridX;
 		paneConstraints.gridy = fatherGridY++;
 		
