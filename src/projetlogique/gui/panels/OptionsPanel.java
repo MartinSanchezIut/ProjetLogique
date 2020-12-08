@@ -21,10 +21,13 @@ public class OptionsPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = -2562596013158468156L;
 	private static JTextArea points;
-	
+
+
+	public static Color bg = new Color(102,179,255);
+
 	public OptionsPanel() {
 		
-		setBackground(new Color(196, 147, 105));
+		setBackground(bg);
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints constraints = new GridBagConstraints();
@@ -59,7 +62,7 @@ public class OptionsPanel extends JPanel{
 
 
 		points = new JTextArea("Point(s) : 0");
-		points.setBackground(new Color(196, 147, 105));
+		points.setBackground(bg);
 		constraints.gridx = 0;
 		constraints.gridy = 4;
 		add(points, constraints);
