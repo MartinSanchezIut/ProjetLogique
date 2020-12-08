@@ -1,6 +1,6 @@
 package projetlogique.gui.panels;
 
-import projetlogique.Score;
+import projetlogique.Main;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -44,7 +44,18 @@ public class OptionsPanel extends JPanel{
 			}
 		});
 
+		JButton termine = new JButton("J'ai fini !");
+		constraints.gridx = 0;
+		constraints.gridy = 2;
+		add(termine, constraints);
 
+		termine.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setPoints(Main.score.addTimeScore());
+			}
+		});
 
 
 		points = new JTextArea("Point(s) : 0");

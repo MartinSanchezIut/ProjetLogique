@@ -19,7 +19,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0b0eced-9595-448e-b3bd-4861d1bc2dce" name="Default Changelist" comment="" />
+    <list default="true" id="c0b0eced-9595-448e-b3bd-4861d1bc2dce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/projetlogique/score/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/Score.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Formule.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/formules/Formule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/FormulePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/OptionsPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/OptionsPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/OptionsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/ProjetLogique/projetlogique/gui/panels/OptionsPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetlogique/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetlogique/Score.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetlogique/gui/panels/FormulePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/gui/panels/FormulePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projetlogique/gui/panels/OptionsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projetlogique/gui/panels/OptionsPanel.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +88,7 @@
       <module name="ProjetLogique" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="projetlogique.*" />
+          <option name="PATTERN" value="projetlogique.score.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -87,7 +101,7 @@
       <module name="ProjetLogique" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="projetlogique.*" />
+          <option name="PATTERN" value="projetlogique.score.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -100,7 +114,7 @@
       <module name="ProjetLogique" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="projetlogique.*" />
+          <option name="PATTERN" value="projetlogique.score.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -182,7 +196,7 @@
       <workItem from="1607335855869" duration="2038000" />
       <workItem from="1607354006708" duration="944000" />
       <workItem from="1607356823583" duration="139000" />
-      <workItem from="1607429197969" duration="1031000" />
+      <workItem from="1607429197969" duration="4093000" />
     </task>
     <servers />
   </component>

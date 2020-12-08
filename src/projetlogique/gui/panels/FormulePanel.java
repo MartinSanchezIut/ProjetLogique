@@ -30,6 +30,7 @@ import projetlogique.Main;
 import projetlogique.formules.Formule;
 import projetlogique.formules.Operateur;
 import projetlogique.formules.SplitFormule;
+import projetlogique.score.Score;
 
 public class FormulePanel extends JPanel {
 	
@@ -126,9 +127,9 @@ public class FormulePanel extends JPanel {
 				
 				pane.revalidate();
 				pane.repaint();
-				
-				
-				OptionsPanel.setPoints(0);
+
+				Main.score = new Score();  // J'ai changé ici
+				OptionsPanel.setPoints(Main.score.getScore());  // J'ai changé ici
 			}
 		});
 		
