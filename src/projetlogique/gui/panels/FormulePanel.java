@@ -71,7 +71,7 @@ public class FormulePanel extends JPanel {
 		constraints.gridx = 0;
 		constraints.gridy = 1;
 		constraints.insets = new Insets(10, 0, 0, 0);
-		pane.setPreferredSize(new Dimension(1500, 500));
+		pane.setPreferredSize(new Dimension(1500, 700));
 		pane.setBorder(BorderFactory.createTitledBorder("Arbre"));
 		
 		pane.setLayout(new GridBagLayout());
@@ -166,23 +166,27 @@ public class FormulePanel extends JPanel {
 					
 					if ( e.getButton() == 1 ) { //clic gauche
 						
-						SplitFormule formules = new Formule(((JTextArea) e.getComponent()).getText()).split();
-						//System.out.println("maxBranchs: "+ maxBranchs);
-						
-						createChildren(formules, (JTextArea) e.getComponent());
-						
-						
-						//fix GUI and add listener to the textArea generated
-						pane.revalidate();
-						
-						
-						//remove listener for this area
-						for ( MouseListener m : e.getComponent().getMouseListeners() ) {
-							e.getComponent().removeMouseListener(m);
+						if ( ((JTextArea) e.getComponent()).getText().length() > 2 ) {
+			
+							SplitFormule formules = new Formule(((JTextArea) e.getComponent()).getText()).split();
+							//System.out.println("maxBranchs: "+ maxBranchs);
+							
+							createChildren(formules, (JTextArea) e.getComponent());
+							
+							
+							//fix GUI and add listener to the textArea generated
+							pane.revalidate();
+							
+							
+							//remove listener for this area
+							for ( MouseListener m : e.getComponent().getMouseListeners() ) {
+								e.getComponent().removeMouseListener(m);
+							}
+							
+							Main.score.addScore(100);  // J'ai changé ici
+							OptionsPanel.setPoints(Main.score.getScore()); // J'ai changé ici
+							
 						}
-						
-						Main.score.addScore(100);  // J'ai changé ici
-						OptionsPanel.setPoints(Main.score.getScore()); // J'ai changé ici
 					}
 					
 					else if ( e.getButton() == 3 ) { //clic droit
@@ -250,7 +254,7 @@ public class FormulePanel extends JPanel {
 		boolean wasAlwaysEquals = false;
 		
 		while ( childrenToParent.get(actual) != null ) { //tant qu'il y a un père
-			if ( textAreaToGridX.get(actual) < textAreaToGridX.get(childrenToParent.get(actual)) ) {
+			if ( textAreaToGridX.get(actual) <= textAreaToGridX.get(childrenToParent.get(actual)) ) {
 				actual = childrenToParent.get(actual);
 			} else {
 				actual = childrenToParent.get(actual);
@@ -291,7 +295,7 @@ public class FormulePanel extends JPanel {
 			System.out.println("fatherGridX: "+textAreaToGridX.get(childrenToParent.get(actual)));
 			System.out.println("GridX: "+textAreaToGridX.get(actual));
 			
-			if ( textAreaToGridX.get(childrenToParent.get(actual)) < textAreaToGridX.get(actual) ) {
+			if ( textAreaToGridX.get(childrenToParent.get(actual)) <= textAreaToGridX.get(actual) ) {
 				actual = childrenToParent.get(actual);
 				wasAlwaysEquals = false;
 				System.out.println("actual: "+actual.toString());
@@ -524,8 +528,7 @@ public class FormulePanel extends JPanel {
 					textAreaToGridX.put(oldFormule, paneConstraints.gridx);
 					textAreaToGridY.put(oldFormule, paneConstraints.gridy);
 					childrenToParent.put(oldFormule, father);
-					if ( oldFormule.getText().length() > 2 )
-						addMouseListener(oldFormule);
+					addMouseListener(oldFormule);
 					
 					System.out.println(oldFormule.getText()+ " : "+ fatherGridY);
 				}
