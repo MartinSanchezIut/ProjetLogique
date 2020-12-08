@@ -160,5 +160,10 @@ public class OptionsPanel extends JPanel{
 	public static boolean hasFoundAllContradictions() {
 		return nbTtlContradiction == nbContradiction;
 	}
+	
+	
+	public static void resetContradictions() {
+		OptionsPanel.contradiction.setText("Contradictions : " + 0 +" / "+  1);
+	}
 
 }

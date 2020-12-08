@@ -129,6 +129,7 @@ public class FormulePanel extends JPanel {
 
 				Main.score = new Score();  // J'ai changé ici
 				OptionsPanel.setPoints(Main.score.getScore());  // J'ai changé ici
+				OptionsPanel.resetContradictions();
 			}
 		});
 		
